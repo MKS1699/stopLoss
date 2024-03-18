@@ -4,6 +4,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 const initialState: AdminPanelSliceTypes = {
   panelScreen: "allPosts",
   workingOnPost: false,
+  postUploadStatus: "idle",
 };
 
 const adminPanelSlice = createSlice({
@@ -26,9 +27,18 @@ const adminPanelSlice = createSlice({
     ) => {
       state.workingOnPost = action.payload.workingStatus;
     },
+    //post upload status
+    setPostUploadStatus: (
+      state,
+      action: PayloadAction<AdminPanelSliceTypes["postUploadStatus"]>
+    ) => {
+      state.postUploadStatus = action.payload;
+    },
     // reset all panel data
     resetAdminPanelState: (state) => {
-      (state.panelScreen = "allPosts"), (state.workingOnPost = false);
+      state.panelScreen = "allPosts";
+      state.workingOnPost = false;
+      state.postUploadStatus = "idle";
     },
   },
 });
@@ -36,6 +46,7 @@ const adminPanelSlice = createSlice({
 export const {
   changeAdminPanelScreen,
   changeAdminPanelWorkingOnPost,
+  setPostUploadStatus,
   resetAdminPanelState,
 } = adminPanelSlice.actions;
 export default adminPanelSlice.reducer;

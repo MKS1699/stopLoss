@@ -6,4 +6,5 @@ export interface AdminPanelSliceTypes {
     | "userSettings"
     | "panelSettings";
   workingOnPost: boolean;
+  postUploadStatus: "idle" | "uploading" | "uploaded";
 }

@@ -19,7 +19,6 @@ const PanelScreen = () => {
     (state) => state.adminPanel.panelScreen
   );
   const [showPanelMenu, setShowPanelMenu] = useState<boolean>(false);
-
   function handleNewPost() {
     if (panelScreen !== "createPost") {
       dispatch(changeAdminPanelScreen({ screen: "createPost" }));
@@ -33,11 +32,11 @@ const PanelScreen = () => {
   return (
     <div className="w-full h-full grid grid-rows-[7%_93%] grid-cols-1 relative px-1 mt-14">
       {/* Panel Menu button & New Post button */}
-      <div className="w-full h-fit grid grid-rows-1 grid-cols-2 py-2 fixed -ml-1 px-1 z-10 backdrop-blur-sm">
+      <div className="w-full h-fit grid grid-rows-1 grid-cols-2 py-2 fixed -ml-1 px-1 pl-3 z-10 backdrop-blur-sm">
         {/* Panel Menu button */}
         <div
           className={
-            "text-[#003b31] dark:text-black self-start justify-self-start"
+            "text-[#003b31] dark:text-[#4cb050] self-start justify-self-start"
           }
           onClick={() => setShowPanelMenu(!showPanelMenu)}
         >

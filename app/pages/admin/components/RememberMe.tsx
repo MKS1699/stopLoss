@@ -30,10 +30,10 @@ const RememberMe = ({ checkBoxId }: { checkBoxId: string }) => {
     dispatch(setAdminScreen({ screen: "adminPanel" }));
     toast.success("Guest Login", { duration: 500 });
     toast(
-      "Since you're in Guest Mode. You wont be able to publish post as well as edit posts which are available to you for viewing.",
+      "Listed Posts cannot be edited nor a new post created can be published.",
       {
         icon: <IoAlert size={"2rem"} />,
-        duration: 6000,
+        duration: 4000,
         position: "top-center",
       }
     );
