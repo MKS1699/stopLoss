@@ -46,8 +46,8 @@ const PostPublishButton = ({ screen }: PostTitleBarPropsTypes) => {
   async function publishPost() {
     if (post.createdBy.name === userName && post.createdBy.id === userID) {
       if (token.length > 1) {
-        // const POST_PATH = `${API_URL}${API_POSTS_ROUTE}${API_POSTS_ENDPOINTS.createPost}`;
-        const POST_PATH = `${API_DEV}${API_POSTS_ROUTE}${API_POSTS_ENDPOINTS.createPost}`;
+        const POST_PATH = `${API_URL}${API_POSTS_ROUTE}${API_POSTS_ENDPOINTS.createPost}`;
+        // const POST_PATH = `${API_DEV}${API_POSTS_ROUTE}${API_POSTS_ENDPOINTS.createPost}`;
         const config: AxiosRequestConfig = {
           url: POST_PATH,
           method: "POST",
