@@ -1,5 +1,5 @@
 "use client";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { useAppDispatch, useAppSelector, usePostValidation } from "@/app/hooks";
 import toast from "react-hot-toast";
 import { BsSendCheck } from "react-icons/bs";
 import { PostTitleBarPropsTypes } from "./PostTitleBar";
@@ -46,7 +46,8 @@ const PostPublishButton = ({ screen }: PostTitleBarPropsTypes) => {
   async function publishPost() {
     if (post.createdBy.name === userName && post.createdBy.id === userID) {
       if (token.length > 1) {
-        const POST_PATH = `${API_URL}${API_POSTS_ROUTE}${API_POSTS_ENDPOINTS.createPost}`;
+        // const POST_PATH = `${API_URL}${API_POSTS_ROUTE}${API_POSTS_ENDPOINTS.createPost}`;
+        const POST_PATH = `${API_DEV}${API_POSTS_ROUTE}${API_POSTS_ENDPOINTS.createPost}`;
         const config: AxiosRequestConfig = {
           url: POST_PATH,
           method: "POST",
@@ -69,15 +70,23 @@ const PostPublishButton = ({ screen }: PostTitleBarPropsTypes) => {
     }
   }
 
+  const result = usePostValidation();
   /* to do : Publish button logic */
   function handlePostPublishButton() {
-    dispatch(setPostUploadStatus("uploading"));
-    if (screen === "createPost") {
-      // post creation details
-      dispatch(setPostCreateDate());
-      dispatch(setPostUpdateDate());
-      dispatch(setPostCreatedBy({ name: userName, id: userID }));
-      dispatch(setPostPublishStatus(true));
+    if (result.passed) {
+      dispatch(setPostUploadStatus("uploading"));
+      if (screen === "createPost") {
+        // post creation details
+        dispatch(setPostCreateDate());
+        dispatch(setPostUpdateDate());
+        dispatch(setPostCreatedBy({ name: userName, id: userID }));
+        dispatch(setPostPublishStatus(true));
+      }
+    } else {
+      toast.error(result.message ? result.message : "", { duration: 1500 });
+      result.errorDetails?.map((err: any) => {
+        toast.error(err.errorMessage, { duration: 3000 });
+      });
     }
   }
 

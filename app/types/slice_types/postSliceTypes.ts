@@ -20,6 +20,9 @@ export interface PostSliceTypes {
   postInfo: {
     upcomingIPO: boolean;
     ipoName: string;
+    open: string;
+    close: string;
+    linkedPostsId: string[];
   };
   createdBy: {
     name: string;
@@ -28,6 +31,7 @@ export interface PostSliceTypes {
   postStatus: {
     publish: boolean;
   };
+  postExternalLinks: string[];
 }
 
 // Paragraph Types of the post

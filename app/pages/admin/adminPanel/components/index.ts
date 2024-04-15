@@ -13,6 +13,7 @@ import PostTitleBar from "./PostTitleBar";
 import PostOptionsBar from "./PostOptionsBar";
 import PostTypeSelection from "./PostTypeSelection";
 import PostUpcomingIPO from "./PostUpcomingIPO";
+import PostUpcomingIPOSelection from "./PostUpcomingIPOSelection";
 import PostImagenDescription from "./PostImagenDescription";
 import PostDescription from "./PostDescription";
 import PostImage from "./PostImage";
@@ -27,7 +28,8 @@ import PostTableCol from "./PostTableCol";
 import PostTags from "./PostTags";
 import PostTag from "./PostTag";
 import PostAuthors from "./PostAuthors";
-import PostIPOName from "./PostIPOName";
+import PostExternalLinks from "./PostExternalLinks";
+import PostExternalLink from "./PostExternalLink";
 export {
   AdminTitleBar,
   User,
@@ -43,6 +45,7 @@ export {
   PostOptionsBar,
   PostTypeSelection,
   PostUpcomingIPO,
+  PostUpcomingIPOSelection,
   PostImagenDescription,
   PostDescription,
   PostImage,
@@ -57,5 +60,6 @@ export {
   PostTags,
   PostTag,
   PostAuthors,
-  PostIPOName,
+  PostExternalLinks,
+  PostExternalLink,
 };

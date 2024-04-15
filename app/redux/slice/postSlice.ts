@@ -6,8 +6,7 @@ import {
 } from "@/app/types/slice_types/postSliceTypes";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-// constans
-// IMAGE constant
+// IMAGE
 const IMAGE: Image = {
   links: {
     original: "",
@@ -17,14 +16,14 @@ const IMAGE: Image = {
   caption: "",
 };
 
-// 3x3 Table constant
+// 3x3 Table
 const TABLE: Table = [
   ["", "", ""],
   ["", "", ""],
   ["", "", ""],
 ];
 
-// paragraph constant
+// paragraph
 const PARAGRAPH: Paragraph = {
   paraHeading: "",
   paraSubHeading: "",
@@ -44,31 +43,6 @@ const PARAGRAPH: Paragraph = {
   paraTable: TABLE,
 };
 
-// initial state of the post slice
-const initialState: PostSliceTypes = {
-  postAuthors: [""],
-  postTitle: "",
-  postDescription: "",
-  postType: "",
-  postCreated: "",
-  postUpdated: "",
-  postImage: IMAGE,
-  hasImage: false,
-  postParagraphs: [PARAGRAPH],
-  postTags: [""],
-  postInfo: {
-    upcomingIPO: false,
-    ipoName: "",
-  },
-  createdBy: {
-    name: "",
-    id: "",
-  },
-  postStatus: {
-    publish: false,
-  },
-};
-
 // EMPTY STATE
 const EMPTY_STATE: PostSliceTypes = {
   postAuthors: [""],
@@ -84,6 +58,9 @@ const EMPTY_STATE: PostSliceTypes = {
   postInfo: {
     upcomingIPO: false,
     ipoName: "",
+    open: "",
+    close: "",
+    linkedPostsId: [""],
   },
   createdBy: {
     name: "",
@@ -92,13 +69,18 @@ const EMPTY_STATE: PostSliceTypes = {
   postStatus: {
     publish: false,
   },
+  postExternalLinks: [""],
 };
+
+// initial state of the post slice
+const initialState: PostSliceTypes = EMPTY_STATE;
 
 // post Slice
 const postSlice = createSlice({
   name: "Post Slice",
   initialState,
   reducers: {
+    // Post Authors reducer
     setPostAuthors: (
       state,
       action: PayloadAction<PostSliceTypes["postAuthors"]>
@@ -152,21 +134,25 @@ const postSlice = createSlice({
         }
       }
     },
+    // Post Title Reducer
     setPostTitle: (
       state,
       action: PayloadAction<PostSliceTypes["postTitle"]>
     ) => {
       state.postTitle = action.payload;
     },
+    // Post Type Reducer
     setPostType: (state, action: PayloadAction<PostSliceTypes["postType"]>) => {
       state.postType = action.payload;
     },
+    // Post Description Reducer
     setPostDescription: (
       state,
       action: PayloadAction<PostSliceTypes["postDescription"]>
     ) => {
       state.postDescription = action.payload;
     },
+    // Post Main Image Reducer
     setPostMainImage: (
       state,
       action: PayloadAction<{
@@ -190,13 +176,14 @@ const postSlice = createSlice({
         state.postImage.links.thumbnail = thumbnail;
       }
     },
+    // Post Main Image Bool Reducer
     setMainHasImage: (
       state,
       action: PayloadAction<PostSliceTypes["hasImage"]>
     ) => {
       state.hasImage = action.payload;
     },
-    // adding new paragraph to the postparagraphs
+    // adding new paragraph to the post paragraphs
     addPostParagraphs: (state, action: PayloadAction<{ paraID: number }>) => {
       const paraID = action.payload.paraID;
       if (state.postParagraphs[paraID]) return;
@@ -312,7 +299,6 @@ const postSlice = createSlice({
         state.postParagraphs[paraID].paraTable[rowID][colID] = data;
       }
     },
-
     // post tags
     setPostTags: (
       state,
@@ -322,11 +308,46 @@ const postSlice = createSlice({
       state.postTags[tagID] = tag;
     },
     // post info
+    // upcomingIPO linking to post
     setPostUpcomingIPOInfo: (state, action: PayloadAction<boolean>) => {
       state.postInfo.upcomingIPO = action.payload;
     },
-    setPostIPONameInfo: (state, action: PayloadAction<string>) => {
+    // upcomingIPO Name
+    setPostUpcomingIPONameInfo: (state, action: PayloadAction<string>) => {
       state.postInfo.ipoName = action.payload;
+    },
+    // upcomingIPO open date
+    setPostUpcomingIPOOpenDateInfo: (state, action: PayloadAction<string>) => {
+      state.postInfo.open = action.payload;
+    },
+    // upcomingIPO close date
+    setPostUpcomingIPOCloseDateInfo: (state, action: PayloadAction<string>) => {
+      state.postInfo.close = action.payload;
+    },
+    // upcomingIPO linkedPostsId
+    setPostUpcomingIPOLinkedPostsInfo: (
+      state,
+      action: PayloadAction<string[]>
+    ) => {
+      // state.postInfo.linkedPostsId[state.postInfo.linkedPostsId.length] =
+      //   action.payload;
+      state.postInfo.linkedPostsId = action.payload;
+    },
+    // add one linkedPost
+    addOnePostUpcomingIPOLinkedPosts: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      const linkedPostId = action.payload;
+      const linkedPostsArr = state.postInfo.linkedPostsId;
+      if (linkedPostId.length > 0) {
+        if (linkedPostsArr[0] == "") {
+          linkedPostsArr[0] = linkedPostId;
+        } else {
+          linkedPostsArr[linkedPostsArr.length] = linkedPostId;
+        }
+        state.postInfo.linkedPostsId = linkedPostsArr;
+      }
     },
     // post creating date
     setPostCreateDate: (state) => {
@@ -355,6 +376,14 @@ const postSlice = createSlice({
     ) => {
       state.postStatus.publish = action.payload;
     },
+    // post external links
+    setPostExternalLink: (
+      state,
+      action: PayloadAction<{ pos: number; link: string }>
+    ) => {
+      const { pos, link } = action.payload;
+      state.postExternalLinks[pos] = link;
+    },
     // reset state
     resetPostState: (state) => {
       const {
@@ -371,6 +400,7 @@ const postSlice = createSlice({
         postType,
         postCreated,
         postUpdated,
+        postExternalLinks,
       } = EMPTY_STATE;
 
       state.createdBy = createdBy;
@@ -386,6 +416,7 @@ const postSlice = createSlice({
       state.postTitle = postTitle;
       state.postType = postType;
       state.postUpdated = postUpdated;
+      state.postExternalLinks = postExternalLinks;
     },
   },
 });
@@ -403,6 +434,7 @@ export const {
   setPostCreateDate,
   setPostUpdateDate,
   setPostCreatedBy,
+  setPostExternalLink,
   // post para related reducers
   setPostParaHeading,
   setPostParaSubHeading,
@@ -413,7 +445,11 @@ export const {
   setPostParaTableData,
   // post info
   setPostUpcomingIPOInfo,
-  setPostIPONameInfo,
+  setPostUpcomingIPONameInfo,
+  setPostUpcomingIPOCloseDateInfo,
+  setPostUpcomingIPOOpenDateInfo,
+  setPostUpcomingIPOLinkedPostsInfo,
+  addOnePostUpcomingIPOLinkedPosts,
   // post status
   setPostPublishStatus,
   //reset state
