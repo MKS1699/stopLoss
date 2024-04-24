@@ -9,6 +9,7 @@ import {
   API_DEV,
   API_POSTS_ENDPOINTS,
   API_POSTS_ROUTE,
+  API_URL,
 } from "@/app/api/endPoints";
 import axios from "axios";
 
@@ -20,8 +21,8 @@ const Main = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const API_PATH = `${API_DEV}${API_POSTS_ROUTE}`;
-
+      // const API_PATH = `${API_DEV}${API_POSTS_ROUTE}`;
+      const API_PATH = `${API_URL}${API_POSTS_ROUTE}`;
       const POST = await axios.post(
         `${API_PATH}${API_POSTS_ENDPOINTS.getPostById}`,
         { id }
