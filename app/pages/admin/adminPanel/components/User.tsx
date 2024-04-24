@@ -31,7 +31,7 @@ const User = ({ className, userIconClass }: UserPropsTypes) => {
         className={`w-8 h-8 bg-[#4cb050] text-white rounded-full self-center justify-self-center text-center text-xl cursor-pointer ${userIconClass}`}
         onClick={handleUserMenu}
       >
-        {guestMode ? "G" : userName.split("")[0].toUpperCase()}
+        {guestMode ? "G" : userName?.split("")[0]?.toUpperCase()}
       </div>
       {/* user menu */}
       <UserMenu

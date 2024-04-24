@@ -1,11 +1,14 @@
 import { Footer, TitleBar } from "@/app/components";
-import { Article, Main, Tags } from "./components";
+import { Main } from "./components";
+import { Suspense } from "react";
 
 const page = () => {
   return (
     <>
       <TitleBar />
-      <Main />
+      <Suspense>
+        <Main />
+      </Suspense>
       <Footer />
     </>
   );
