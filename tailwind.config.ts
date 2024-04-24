@@ -50,6 +50,14 @@ const config: Config = {
             // display: "block",
           },
         },
+        loading: {
+          from: {
+            rotate: "0deg",
+          },
+          to: {
+            rotate: "360 deg",
+          },
+        },
       },
     },
     animation: {
@@ -57,8 +65,9 @@ const config: Config = {
       sideBarMenuSlideOut: "sideBarMenuSlideOut 1s ease-in",
       rotateNhide: "rotateNhide 0.3s ease-in",
       rotateNshow: "rotateNshow 0.3s ease-in",
+      loading: "loading 1s linear infinite",
     },
   },
-  plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
+  plugins: [require("tailwind-scrollbar")],
 };
 export default config;

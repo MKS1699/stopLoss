@@ -10,6 +10,7 @@ import {
   setAppAdminGuestMode,
   setAppAdminLoginStatus,
 } from "@/app/redux/slice/appSlice";
+import { resetPostState } from "@/app/redux/slice/postSlice";
 import { resetSession } from "@/app/redux/slice/sessionSlice";
 import { StyledComponent } from "@/app/types/component_types";
 import toast from "react-hot-toast";
@@ -34,15 +35,17 @@ const UserMenu = ({
   // logout function
   function logout() {
     if (!guestMode) {
-      dispatch(resetSession());
-      dispatch(resetAdminPanelState());
-      dispatch(setAppAdminLoginStatus({ loginStatus: false }));
+      dispatch(resetSession()); // reset session
+      dispatch(resetPostState()); // reset post state
+      dispatch(resetAdminPanelState()); // reset admin panel state
+      dispatch(setAppAdminLoginStatus({ loginStatus: false })); // reset login
       dispatch(setAdminScreen({ screen: "login" }));
       toast.success(`${userName} successfully logged out.`);
       setShowUserMenu(false);
     } else {
       dispatch(resetSession());
       dispatch(resetAdminPanelState());
+      dispatch(resetPostState());
       dispatch(setAppAdminLoginStatus({ loginStatus: false }));
       dispatch(setAdminScreen({ screen: "login" }));
       dispatch(setAppAdminGuestMode({ guestMode: false }));

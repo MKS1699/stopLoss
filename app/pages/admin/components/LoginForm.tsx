@@ -56,15 +56,14 @@ const LoginForm = ({
     const isPasswordValidated = validateCredentials(userPassword, "password");
     if (isNameValidated && isPasswordValidated) {
       try {
+        // login body
         const body = {
           userName,
           userPassword,
         };
-        const res = await axios.post(
-          `${API_URL}${API_USERS_ROUTE}${API_USERS_ENDPOINTS.login}`,
-          body
-        );
-        console.log(res);
+        //login path
+        const path = `${API_URL}${API_USERS_ROUTE}${API_USERS_ENDPOINTS.login}`;
+        const res = await axios.post(path, body);
         // login successful
         if (res.status === 200) {
           // getting session information
@@ -82,6 +81,7 @@ const LoginForm = ({
           toast.success("Login Successful");
         }
       } catch (error) {
+        // login error
         toast.error("Login Unsuccessful");
         console.log(error);
         dispatch(resetSession());

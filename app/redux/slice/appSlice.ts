@@ -8,6 +8,7 @@ const initialState: AppSliceTypes = {
   adminScreen: "login",
   loginStatus: false,
   guestMode: false,
+  loadingState: true,
 };
 
 export const appSlice = createSlice({
@@ -55,6 +56,9 @@ export const appSlice = createSlice({
     ) => {
       state.guestMode = action.payload.guestMode;
     },
+    toggleLoadingState: (state) => {
+      state.loadingState = !state.loadingState;
+    },
     // reset app State
     resetAppState: (state) => {
       state.adminScreen = "login";
@@ -62,6 +66,7 @@ export const appSlice = createSlice({
       state.appTheme = "light";
       state.guestMode = false;
       state.loginStatus = false;
+      state.loadingState = true;
     },
   },
 });
@@ -72,6 +77,7 @@ export const {
   setAdminScreen,
   setAppAdminLoginStatus,
   setAppAdminGuestMode,
+  toggleLoadingState,
   resetAppState,
 } = appSlice.actions;
 

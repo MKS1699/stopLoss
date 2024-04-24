@@ -4,7 +4,7 @@ import { TitleBar } from "@/app/components";
 
 const Home = () => {
   return (
-    <div className="w-full h-screen">
+    <div className="w-full min-h-screen">
       <TitleBar />
       <LandingPage />
     </div>
