@@ -5,6 +5,7 @@ import sessionSlice from "./sessionSlice";
 import postSlice from "./postSlice";
 import signUpSlice from "./signUpSlice";
 import adminPanelSlice from "./adminPanelSlice";
+import upcomingIPOEntriesSlice from "./upcomingIPOEntriesSlice";
 
 export {
   appSlice,
@@ -13,4 +14,5 @@ export {
   postSlice,
   signUpSlice,
   adminPanelSlice,
+  upcomingIPOEntriesSlice,
 };

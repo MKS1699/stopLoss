@@ -4,4 +4,5 @@ export interface AppSliceTypes {
   adminScreen: "login" | "signUp" | "forgotPassword" | "adminPanel";
   loginStatus: boolean;
   guestMode: boolean;
+  loadingState: boolean;
 }

@@ -7,6 +7,7 @@ import {
   postSlice,
   sessionSlice,
   signUpSlice,
+  upcomingIPOEntriesSlice,
 } from "../slice";
 
 export const store = configureStore({
@@ -17,6 +18,7 @@ export const store = configureStore({
     post: postSlice,
     signUp: signUpSlice,
     adminPanel: adminPanelSlice,
+    upcomingIPO: upcomingIPOEntriesSlice,
   },
 });
 

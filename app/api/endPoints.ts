@@ -15,6 +15,16 @@ export const API_USERS_ENDPOINTS = {
 
 export const API_POSTS_ENDPOINTS = {
   createPost: "/createPost",
+  getPostById: "/get/id",
+  getPostByType: "/get/type",
+  getPostByTypeOlder: "/get/type/pagination",
+  // for pagination routes
+  countPosts: "/count/all",
+  countPostsByType: "/count/type",
+  countPostsByUser: "/count/user",
+  // tags related routes
+  getTagForPost: "/tags/",
+  getPostsOfTags: "/tags/posts",
 };
 
 export const API_POSTS_UPCOMING_IPO_LIST_ENDPOINTS = {

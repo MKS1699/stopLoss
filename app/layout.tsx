@@ -4,6 +4,7 @@ import { barlow } from "@/app/utils/fonts";
 import Script from "next/script";
 import StoreProvider from "./redux/store/StoreProvider";
 import HotToast from "./components/HotToast";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: {
@@ -40,6 +41,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9077808244197912"
         /> */}
+        <Analytics />
       </body>
     </html>
   );

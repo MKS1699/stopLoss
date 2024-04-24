@@ -20,6 +20,7 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import { FaRegNewspaper } from "react-icons/fa";
 import { GrContactInfo } from "react-icons/gr";
 import { IoMdInformationCircle } from "react-icons/io";
+import Link from "next/link";
 
 const NavBar = () => {
   return (
@@ -27,17 +28,23 @@ const NavBar = () => {
       {/* Home Menu */}
       <div className="cursor-pointer w-fit h-fit grid grid-cols-[30%_70%] grid-rows-1 items-center gap-1">
         <HiHome className="w-5 h-5" />
-        <h4 className="">Home</h4>
+        <h4 className="">
+          <Link href="/">Home</Link>
+        </h4>
       </div>
       {/* IPO Menu */}
       <div className="cursor-pointer w-fit h-fit grid grid-cols-[30%_70%] grid-rows-1 items-center gap-1">
         <GiTakeMyMoney className="w-5 h-5" />
-        <h4 className="">IPO</h4>
+        <h4 className="">
+          <Link href={"/pages/home/ipo?category=ipo"}>IPO</Link>
+        </h4>
       </div>
       {/* Market update */}
       <div className="cursor-pointer w-fit h-fit flex flex-grow text-nowrap gap-1 items-center">
         <FaRegNewspaper className="w-5 h-5" />
-        <h4 className="">Market Updates</h4>
+        <h4 className="">
+          <Link href="/pages/home/news?category=news">Market Updates</Link>
+        </h4>
       </div>
       {/* Contacts */}
       <div className="hidden cursor-pointer w-fit h-fit xl:grid grid-cols-[30%_70%] grid-rows-1 items-center gap-0">

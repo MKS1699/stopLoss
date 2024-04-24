@@ -29,12 +29,18 @@
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 // slice actions import
 import { setAppScreen } from "@/app/redux/slice/appSlice";
+import { useRouter } from "next/navigation";
+import { MdOutlineDisplaySettings } from "react-icons/md";
+import { HiHome } from "react-icons/hi";
 
 const ChangeAppScreen = () => {
   const dispatch = useAppDispatch();
   const appScreen = useAppSelector((state) => state.app.appScreen);
 
+  const router = useRouter();
+
   function handleAppScreenChangeButton() {
+    router.replace("/", { scroll: true });
     if (appScreen === "home") {
       dispatch(setAppScreen({ screen: "admin" }));
     } else if (appScreen === "admin") {
@@ -42,9 +48,25 @@ const ChangeAppScreen = () => {
     }
   }
   return (
-    <button onClick={handleAppScreenChangeButton}>
-      {appScreen === "home" ? "Login" : "Home"}
-    </button>
+    <div className="w-full h-fit">
+      {appScreen === "home" ? (
+        <div
+          className="cursor-pointer w-full h-fit flex flex-grow text-nowrap gap-1 items-center justify-around"
+          onClick={handleAppScreenChangeButton}
+        >
+          <MdOutlineDisplaySettings className="w-5 h-5" />
+          <h4 className="hidden md:block">Admin Panel</h4>
+        </div>
+      ) : (
+        <div
+          className="cursor-pointer w-full h-fit flex flex-grow text-nowrap gap-1 items-center justify-around"
+          onClick={handleAppScreenChangeButton}
+        >
+          <HiHome className="w-5 h-5" />
+          <h4 className="hidden md:block">Home</h4>
+        </div>
+      )}
+    </div>
   );
 };
 

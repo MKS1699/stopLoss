@@ -353,12 +353,12 @@ const postSlice = createSlice({
     setPostCreateDate: (state) => {
       const date = new Date();
 
-      state.postCreated = date.toString();
+      state.postCreated = date;
     },
     //post update date
     setPostUpdateDate: (state) => {
       const date = new Date();
-      state.postUpdated = date.toString();
+      state.postUpdated = date;
     },
     // created by
     setPostCreatedBy: (

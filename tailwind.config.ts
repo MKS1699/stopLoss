@@ -68,6 +68,6 @@ const config: Config = {
       loading: "loading 1s linear infinite",
     },
   },
-  plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
+  plugins: [require("tailwind-scrollbar")],
 };
 export default config;

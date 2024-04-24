@@ -77,9 +77,9 @@ const PostPublishButton = ({ screen }: PostTitleBarPropsTypes) => {
       dispatch(setPostUploadStatus("uploading"));
       if (screen === "createPost") {
         // post creation details
-        dispatch(setPostCreateDate());
-        dispatch(setPostUpdateDate());
-        dispatch(setPostCreatedBy({ name: userName, id: userID }));
+        dispatch(setPostCreateDate()); // post create date
+        dispatch(setPostUpdateDate()); // post update date
+        dispatch(setPostCreatedBy({ name: userName, id: userID })); // post created by
         dispatch(setPostPublishStatus(true));
       }
     } else {

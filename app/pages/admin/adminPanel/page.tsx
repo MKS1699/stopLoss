@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { AdminTitleBar, PanelScreen } from "./components";
 
 const AdminPanel = () => {
