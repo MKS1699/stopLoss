@@ -1,5 +1,3 @@
-import React from "react";
-
 const PanelMenu = () => {
   return (
     <div className="w-full h-full fixed mt-14 backdrop-blur-sm pt-2 -ml-1 z-10 overflow-scroll scrollbar-none">
