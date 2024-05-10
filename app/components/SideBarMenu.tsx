@@ -34,14 +34,14 @@ interface SideBarMenuPropsTypes extends StyledComponent {
 const SideBarMenu = ({ className, showMenu }: SideBarMenuPropsTypes) => {
   return (
     <div
-      className={`absolute z-[999] w-[85vw] min-h-screen top-16 bg-opacity-60 bg-[#003b31] text-white dark:bg-gray-600 dark:bg-opacity-70 p-4 text-lg transition-all ease-in grid grid-cols-1 grid-flow-row rounded-tr-md ${
+      className={`absolute z-[999] w-[85vw] min-h-screen top-16 bg-opacity-60 bg-dark text-white dark:bg-gray-600 dark:bg-opacity-70 p-4 text-lg transition-all ease-in grid grid-cols-1 grid-flow-row rounded-tr-md ${
         showMenu ? "animate-sideBarMenuSlideIn" : "animate-sideBarMenuSlideOut"
       }`}
     >
       {/* Search Bar */}
       <SearchBar />
       {/* Home Menu */}
-      <div className="cursor-pointer w-fit h-fit ">
+      <div className="cursor-pointer w-fit h-fit  text-light">
         <Link
           href="/"
           className="flex flex-grow text-nowrap gap-2 items-center"
@@ -51,7 +51,7 @@ const SideBarMenu = ({ className, showMenu }: SideBarMenuPropsTypes) => {
         </Link>
       </div>
       {/* IPO Menu */}
-      <div className="cursor-pointer w-fit h-fit ">
+      <div className="cursor-pointer w-fit h-fit  text-light">
         <Link
           href={"/pages/home/ipo?category=ipo"}
           className="flex flex-grow text-nowrap gap-2 items-center"
@@ -61,7 +61,7 @@ const SideBarMenu = ({ className, showMenu }: SideBarMenuPropsTypes) => {
         </Link>
       </div>
       {/* Market update */}
-      <div className="cursor-pointer w-fit h-fit">
+      <div className="cursor-pointer w-fit h-fit text-light">
         <Link
           href={"/pages/home/news?category=news"}
           className="flex flex-grow text-nowrap gap-2 items-center"
@@ -71,12 +71,12 @@ const SideBarMenu = ({ className, showMenu }: SideBarMenuPropsTypes) => {
         </Link>
       </div>
       {/* Contacts */}
-      <div className="cursor-pointer w-fit h-fit grid grid-cols-[30%_70%] grid-rows-1 items-center gap-2">
+      <div className="cursor-pointer w-fit h-fit grid grid-cols-[30%_70%] grid-rows-1 items-center gap-2 text-light">
         <GrContactInfo className="w-5 h-5" />
         <h4 className="">Contact</h4>
       </div>
       {/* About */}
-      <div className="cursor-pointer w-fit h-fit grid grid-cols-[30%_70%] grid-rows-1 items-center gap-2">
+      <div className="cursor-pointer w-fit h-fit grid grid-cols-[30%_70%] grid-rows-1 items-center gap-2 text-light">
         <IoMdInformationCircle className="w-5 h-5" />
         <h4 className="">About</h4>
       </div>

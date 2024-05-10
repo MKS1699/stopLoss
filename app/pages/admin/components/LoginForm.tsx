@@ -96,7 +96,7 @@ const LoginForm = ({
 
   return (
     <div
-      className={`w-full h-full grid grid-rows-4 grid-cols-1 p-2 bg-white dark:bg-[#003b31] ${className}`}
+      className={`w-full h-full grid grid-rows-4 grid-cols-1 p-2  ${className}`}
     >
       {/* <EmailField slice="login" emailId={emailId} /> */}
       <NameField slice="login" nameId={nameId} />

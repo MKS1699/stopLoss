@@ -30,7 +30,7 @@ export default function RootLayout({
         {/* Google Adsencse account linking */}
         {/* <meta name="google-adsense-account" content="ca-pub-9077808244197912" /> */}
       </head>
-      <body className={`${barlow.className}`}>
+      <body className={`${barlow.className} bg-light dark:bg-bodyDark`}>
         <StoreProvider>
           <HotToast />
           {children}

@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 /* Component : Info & Usage
  * Info :
  *       Component for searching the content of the website.
@@ -26,16 +27,19 @@ const SearchBar = ({
   classNameSearchIcon,
   classNameSearchField,
 }: SearchBarPropsTypes) => {
+  const [searchValue, setSearchValue] = useState<string>("");
   return (
     <div
       className={`w-full h-full relative grid grid-cols-1 grid-rows-1 ${className}`}
     >
       <input
         type="text"
-        className={`w-full h-fit border-b-2 border-b-solid border-b-[#003b31] dark:border-b-white bg-transparent text-[#003b31] dark:text-white outline-none text-lg pr-5 ${classNameSearchField}`}
+        className={`w-full h-fit border-b-2 border-b-solid border-b-dark dark:border-b-light bg-light dark:bg-dark text-dark dark:text-light outline-none text-lg pr-5 ${classNameSearchField}`}
+        onChange={(e) => setSearchValue(e.target.value.toString())}
+        value={searchValue}
       />
       <CiSearch
-        className={`absolute top-2 right-0 cursor-pointer animate-bounce dark:text-white text-[#003b31] ${classNameSearchIcon}`}
+        className={`absolute top-2 right-0 cursor-pointer animate-bounce dark:text-light text-dark ${classNameSearchIcon}`}
       />
     </div>
   );

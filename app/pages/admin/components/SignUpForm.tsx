@@ -69,7 +69,7 @@ const SignUpForm = ({
 
   return (
     <div
-      className={`w-full h-full grid grid-rows-3 grid-cols-1 p-2 bg-white dark:bg-[#003b31] ${className}`}
+      className={`w-full h-full grid grid-rows-3 grid-cols-1 p-2 ${className}`}
     >
       {/* <EmailField slice="signUp" emailId={emailId} /> */}
       <NameField slice="signUp" nameId={nameId} />

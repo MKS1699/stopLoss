@@ -24,7 +24,7 @@ import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <div className="hidden lg:col-start-3 lg:grid lg:grid-rows-1 lg:grid-flow-col-dense lg:text-xl lg:items-center lg:justify-items-center lg:gap-2 text-[#003b31] dark:text-white transition-all ease-in">
+    <div className="hidden lg:col-start-3 lg:grid lg:grid-rows-1 lg:grid-flow-col-dense lg:text-xl lg:items-center lg:justify-items-center lg:gap-2 text-dark dark:text-light transition-all ease-in">
       {/* Home Menu */}
       <div className="cursor-pointer w-fit h-fit grid grid-cols-[30%_70%] grid-rows-1 items-center gap-1">
         <HiHome className="w-5 h-5" />

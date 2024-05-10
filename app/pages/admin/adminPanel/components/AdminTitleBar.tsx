@@ -16,7 +16,7 @@ const AdminTitleBar = () => {
         className="w-10 h-10 self-center"
       />
       <h1
-        className={`${barlow.className} font-thin text-[#003b31] dark:text-[#4cb050] text-5xl self-center w-full h-fit  md:justify-self-start`}
+        className={`${barlow.className} font-thin text-dark dark:text-light text-5xl self-center w-full h-fit  md:justify-self-start`}
       >
         STOPLOSS
       </h1>

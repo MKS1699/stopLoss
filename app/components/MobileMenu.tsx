@@ -24,14 +24,14 @@ const MobileMenu = ({ className }: StyledComponent) => {
       className={`self-center justify-self-center w-full h-full grid grid-rows-1 grid-cols-1 relative ${className}`}
     >
       <RxCross1
-        className={`w-6 h-6 sm:w-12 sm:h-12 self-center justify-self-center  text-[#003B31] dark:text-white cursor-pointer ${
+        className={`w-6 h-6 sm:w-12 sm:h-12 self-center justify-self-center  text-dark dark:text-light cursor-pointer ${
           showMenu ? "block animate-rotateNshow" : "animate-rotateNhide hidden"
         }`}
         onClick={() => setShowMenu(false)}
       />
 
       <RxHamburgerMenu
-        className={`w-6 h-6 sm:w-12 sm:h-12 self-center justify-self-center  text-[#003B31] dark:text-white cursor-pointer ${
+        className={`w-6 h-6 sm:w-12 sm:h-12 self-center justify-self-center  text-dark dark:text-light cursor-pointer ${
           showMenu ? "animate-rotateNhide hidden" : "block animate-rotateNshow"
         }`}
         onClick={() => setShowMenu(true)}

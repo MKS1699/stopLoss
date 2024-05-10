@@ -36,7 +36,7 @@ const ThemeEnabler = ({ className }: ThemeEnablerPropsTypes) => {
   }, [theme]);
   return (
     <div
-      className={`w-full h-full grid grid-cols-1 grid-rows-1 cursor-pointer items-center justify-items-center text-[#003B31] dark:text-white ${className}`}
+      className={`w-full h-full grid grid-cols-1 grid-rows-1 cursor-pointer items-center justify-items-center text-dark dark:text-light ${className}`}
       onClick={() => dispatch(toggleAppTheme())}
     >
       {/* different icon base on theme to change */}

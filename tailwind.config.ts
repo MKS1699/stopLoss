@@ -67,6 +67,11 @@ const config: Config = {
       rotateNshow: "rotateNshow 0.3s ease-in",
       loading: "loading 1s linear infinite",
     },
+    colors: {
+      light: "#FBFBFF",
+      dark: "#0F1020",
+      bodyDark: "#0F0326",
+    },
   },
   plugins: [require("tailwind-scrollbar")],
 };
