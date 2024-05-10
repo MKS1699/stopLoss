@@ -6,7 +6,7 @@ import { StyledComponent } from "@/app/types/component_types";
 const MastHead = ({ className }: StyledComponent) => {
   return (
     <div
-      className={`w-full h-full grid grid-rows-1 grid-cols-[20%_70%_10%] items-center bg-white dark:bg-[#003B31] transition-all ease-in ${className}`}
+      className={`w-full h-full grid grid-rows-1 grid-cols-[20%_70%_10%] items-center  transition-all ease-in ${className}`}
     >
       <Image
         src={Logo}
@@ -15,11 +15,11 @@ const MastHead = ({ className }: StyledComponent) => {
         className="w-12 h-12 md:w-8 md:h-8 lg:w-12 lg:h-12 justify-self-center"
       />
       <div
-        className={`${barlow.className} font-thin text-5xl text-[#003B31] dark:text-white justify-self-center md:text-4xl lg:text-5xl xl:text-7xl`}
+        className={`${barlow.className} font-thin text-5xl text-light justify-self-center md:text-3xl lg:text-4xl xl:text-6xl`}
       >
         STOPLOSS
       </div>
-      <ThemeEnabler className="justify-self-center md:w-8 md:h-8" />
+      <ThemeEnabler className="justify-self-center md:w-8 md:h-8 text-light" />
     </div>
   );
 };

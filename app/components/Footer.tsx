@@ -1,3 +1,4 @@
+"use client";
 /* Component : Info & Usage
  * Info :
  *       This is the footer of the app which will be always
@@ -20,21 +21,26 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import { FaRegNewspaper } from "react-icons/fa";
 import { GrContactInfo } from "react-icons/gr";
 import { IoMdInformationCircle } from "react-icons/io";
+import { useAppSelector } from "../hooks";
 
 const Footer = () => {
+  const appScreen = useAppSelector((state) => state.app.appScreen);
   return (
-    <div className="w-full h-fit dark:bg-[#202D37] dark:text-white bg-white text-[#202d37] transition-all ease-in border-t-2 border-solid border-t-[#003b31] grid grid-rows-1 grid-flow-col items-center justify-items-center">
+    <div className="w-full h-fit bg-dark text-light transition-all ease-in grid grid-rows-1 grid-flow-col items-center justify-items-center py-2">
       <ChangeAppScreen />
+      {/* Home menu will be available only if the user is not in the admin panel */}
       {/* Home Menu */}
-      <div className="cursor-pointer w-full h-fit">
-        <Link
-          href="/"
-          className="flex flex-grow text-nowrap gap-1 items-center justify-around"
-        >
-          <HiHome className="w-5 h-5" />
-          <h4 className="hidden md:block">Home</h4>
-        </Link>
-      </div>
+      {appScreen === "home" && (
+        <div className="cursor-pointer w-full h-fit">
+          <Link
+            href="/"
+            className="flex flex-grow text-nowrap gap-1 items-center justify-around"
+          >
+            <HiHome className="w-5 h-5" />
+            <h4 className="hidden md:block">Home</h4>
+          </Link>
+        </div>
+      )}
       {/* IPO Menu */}
       <div className="cursor-pointer w-full h-fit ">
         <Link

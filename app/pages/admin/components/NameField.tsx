@@ -37,7 +37,7 @@ const NameField = ({ className, slice, nameId }: NameFieldPropsTypes) => {
     <div
       className={`${barlow.className} w-full h-full grid grid-cols-1 grid-rows-2 ${className}`}
     >
-      <h3 className="font-medium text-xl text-[#2B3947] dark:text-white self-end md:text-lg">
+      <h3 className="font-medium text-xl text-light self-end md:text-lg">
         Name
       </h3>
       <input
@@ -45,7 +45,7 @@ const NameField = ({ className, slice, nameId }: NameFieldPropsTypes) => {
         name={nameId}
         id={nameId}
         value={userName}
-        className="text-xl md:text-lg px-2 text-[#003B31] bg-white dark:bg-[#003b31] dark:text-white outline-none border-2 border-solid border-[#4CB050] rounded-md"
+        className="text-xl md:text-lg px-2 text-dark bg-white dark:bg-[#003b31] dark:text-light outline-none border-2 border-solid border-[#4CB050] rounded-md"
         onChange={(e) => setUserName(e.target.value)}
       />
     </div>

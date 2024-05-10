@@ -44,7 +44,7 @@ const PostCard = ({ post }: PostCardPropsTypes) => {
             />
           </div>
           {/* Post Info */}
-          <div className="w-full h-full py-1 flex flex-col">
+          <div className="w-full h-full py-1 flex flex-col text-dark dark:text-light">
             {/* Post Title*/}
             <div className="w-full h-8 overflow-hidden text-lg font-medium text-blue-500 px-1">
               {post?.postTitle}

@@ -14,7 +14,7 @@ import { barlow } from "../utils/fonts";
 const Slogan = ({ className }: StyledComponent) => {
   return (
     <div
-      className={`${barlow.className} w-full h-full text-center text-xl text-[#003B31] dark:text-white bg-white dark:bg-[#003b31]  py-2 ${className}`}
+      className={`${barlow.className} w-full h-full text-center text-xl text-light py-2 ${className}`}
     >
       Tomorrow Never Comes, Until Its TOO Late!
     </div>

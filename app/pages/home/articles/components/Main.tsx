@@ -42,7 +42,7 @@ const Main = () => {
     fetch();
   }, [id]);
   return (
-    <div className="md:container md:mx-auto md:w-1/2">
+    <div className="md:container md:mx-auto md:w-1/2 bg-light dark:bg-bodyDark">
       <Article post={post} />
       <Tags tags={tags} />
       {/* <RelatedPosts tags={tags} /> */}

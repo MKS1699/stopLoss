@@ -4,7 +4,7 @@ const ArticleInfo = ({ authors, date }: { authors: string[]; date: Date }) => {
     return date;
   }
   return (
-    <div className="w-full h-auto text-xs md:text-sm xl:text-base grid grid-cols-[80%_20%] grid-rows-1 px-2">
+    <div className="w-full h-auto text-xs md:text-sm xl:text-base grid grid-cols-[80%_20%] grid-rows-1 px-2 text-dark dark:text-light">
       {/* authors */}
       <div className="w-full h-auto self-center grid grid-flow-col">
         {authors?.map((author: string, index: number) => (
