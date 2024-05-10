@@ -1,15 +1,17 @@
-"use client";
-import { FetchUpcomingIPOEntries } from "@/app/api";
-import React, { useEffect, useState } from "react";
+interface UpcomingIPOPropsTypes {
+  upcomingIPO:
+    | {
+        _id: string;
+        ipoName: string;
+        open: string;
+        close: string;
+        linkedPostsId: string[];
+        __v: number;
+      }[]
+    | {}[];
+}
 
-const UpcomingIPO = () => {
-  const upcomingIPO = FetchUpcomingIPOEntries();
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    upcomingIPO.length > 0 ? setLoading(false) : setLoading(true);
-  }, [upcomingIPO]);
-
+const UpcomingIPO = ({ upcomingIPO }: UpcomingIPOPropsTypes) => {
   return (
     <div className="w-full md:w-1/2 xl:w-1/3 h-auto p-2 my-2">
       <h1 className="w-full h-fit text-center text-xl text-dark dark:text-light">

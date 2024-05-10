@@ -23,13 +23,13 @@ const LoginButtons = ({
     >
       <button
         onClick={handleButton1}
-        className="w-full h-fit border-2 border-solid border-[#4CB050] text-[#4CB050] text-2xl rounded-md focus:bg-[#4CB050] focus:text-white dark:focus:text-[#003b31] py-4"
+        className="w-full h-fit border-2 border-solid border-[#4CB050] focus:text-dark text-[#4cb050] text-2xl rounded-md focus:bg-[#4CB050] py-4"
         autoFocus={true}
       >
         {button1}
       </button>
       <button
-        className="w-full h-fit border-2 border-solid border-[#4CB050] text-[#4CB050] text-2xl rounded-md focus:bg-[#4CB050] focus:text-white dark:focus:text-[#003b31] py-4"
+        className="w-full h-fit border-2 border-solid border-[#4CB050] focus:text-dark text-[#4cb050] text-2xl rounded-md focus:bg-[#4CB050] py-4"
         onClick={handleButton2}
       >
         {button2}

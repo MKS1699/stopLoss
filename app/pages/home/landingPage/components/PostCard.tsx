@@ -13,12 +13,21 @@ const PostCard = ({ post }: PostCardPropsTypes) => {
     return date;
   }
 
+  const postTitle = post?.postTitle;
+  function createTitleURL(title: string): string {
+    const title_lower = title.toLowerCase();
+    const titleArr = title_lower.split(" ");
+    const newTitle = titleArr.join("-");
+    return newTitle;
+  }
   return (
     <>
       {/* mobile version */}
       <Link
         href={{
-          pathname: "/pages/home/articles",
+          pathname: `/pages/home/categories/${post?.postType}/${createTitleURL(
+            postTitle
+          )}`,
           query: {
             id: post?._id,
           },
@@ -68,7 +77,9 @@ const PostCard = ({ post }: PostCardPropsTypes) => {
       {/* tablet and above */}
       <Link
         href={{
-          pathname: "/pages/home/articles",
+          pathname: `/pages/home/categories/${post?.postType}/${createTitleURL(
+            postTitle
+          )}`,
           query: {
             id: post?._id,
           },

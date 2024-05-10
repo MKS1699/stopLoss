@@ -1,6 +1,6 @@
 "use client";
 import { PostSection, UpcomingIPO } from "./components";
-import { FetchPostsTypeSize } from "@/app/api";
+import { FetchPostsTypeSize, FetchUpcomingIPOEntries } from "@/app/api";
 
 const LandingPage = () => {
   const BLOG_POSTS = FetchPostsTypeSize({ postType: "blog" });
@@ -12,21 +12,20 @@ const LandingPage = () => {
   const SPONSORED_POSTS = FetchPostsTypeSize({ postType: "sponsored_post" });
   const NEWS_POSTS = FetchPostsTypeSize({ postType: "news" });
 
+  const upcomingIPO = FetchUpcomingIPOEntries();
   return (
-    <div className="w-full h-full grid grid-flow-row-dense gap-y-4">
-      <UpcomingIPO />
-      {IPO_POSTS > 0 ? <PostSection postType="ipo" limit={10} /> : null}
-      {NEWS_POSTS > 0 ? <PostSection postType="news" limit={10} /> : null}
-      {SPONSORED_POSTS > 0 ? (
+    <div className="w-full h-full grid grid-flow-row-dense gap-y-4 pt-4">
+      {upcomingIPO.length > 0 && <UpcomingIPO upcomingIPO={upcomingIPO} />}
+      {IPO_POSTS > 0 && <PostSection postType="ipo" limit={10} />}
+      {NEWS_POSTS > 0 && <PostSection postType="news" limit={10} />}
+      {SPONSORED_POSTS > 0 && (
         <PostSection postType="sponsored_post" limit={10} />
-      ) : null}
-      {BLOG_POSTS > 0 ? <PostSection postType="blog" limit={10} /> : null}
-      {COMPAnY_PROFILE_POSTS > 0 ? (
+      )}
+      {BLOG_POSTS > 0 && <PostSection postType="blog" limit={10} />}
+      {COMPAnY_PROFILE_POSTS > 0 && (
         <PostSection postType="company_profile" limit={10} />
-      ) : null}
-      {TUTORIAL_POSTS > 0 ? (
-        <PostSection postType="tutorial" limit={10} />
-      ) : null}
+      )}
+      {TUTORIAL_POSTS > 0 && <PostSection postType="tutorial" limit={10} />}
     </div>
   );
 };
