@@ -40,6 +40,7 @@ export async function generateMetadata({
     title: post.postTitle,
     description: post.postDescription,
     keywords: tagsArr,
+    authors: post?.postAuthors,
   };
 }
 

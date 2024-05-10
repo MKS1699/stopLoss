@@ -17,6 +17,8 @@ export const metadata: Metadata = {
     icon: "/logo.png",
   },
   metadataBase: new URL("https://www.stoploss.live"),
+  creator: "Mehul Kumar (CoderMehul)",
+  publisher: "Mehul Kumar",
 };
 
 export default function RootLayout({
