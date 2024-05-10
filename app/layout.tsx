@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/logo.png",
   },
-  // metadataBase: new URL("https://www.stoploss.live"),
+  metadataBase: new URL("https://www.stoploss.live"),
 };
 
 export default function RootLayout({
@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en" className="scrollbar-none">
       <head>
         {/* Google Adsencse account linking */}
-        {/* <meta name="google-adsense-account" content="ca-pub-9077808244197912" /> */}
+        <meta name="google-adsense-account" content="ca-pub-9077808244197912" />
       </head>
       <body className={`${barlow.className} bg-light dark:bg-bodyDark`}>
         <StoreProvider>
@@ -36,12 +36,12 @@ export default function RootLayout({
           {children}
         </StoreProvider>
         {/* Google Ads Script */}
-        {/* <Script
+        <Script
           id="adsbygoogle-init"
           strategy="afterInteractive"
           crossOrigin="anonymous"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9077808244197912"
-        /> */}
+        />
         <Analytics />
         <SpeedInsights />
       </body>
