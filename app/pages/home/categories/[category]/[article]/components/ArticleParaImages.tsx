@@ -19,6 +19,7 @@ const ArticleParaImages = ({
           image={image}
           key={`Article-Paragraph-${paraNumber}-Image-${index + 1}`}
           className="w-80 h-80 mx-auto"
+          showCaption
         />
       ))}
     </div>

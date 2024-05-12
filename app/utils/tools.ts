@@ -18,3 +18,10 @@ export const validateCredentials = (
   }
   return credentialValidationStatus;
 };
+
+export function createTitleURL(title: string): string {
+  const title_lower = title.toLowerCase();
+  const titleArr = title_lower.split(" ");
+  const newTitle = titleArr.join("-");
+  return newTitle;
+}

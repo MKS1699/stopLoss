@@ -53,7 +53,7 @@ const SideBarMenu = ({ className, showMenu }: SideBarMenuPropsTypes) => {
       {/* IPO Menu */}
       <div className="cursor-pointer w-fit h-fit  text-light">
         <Link
-          href={"/pages/home/ipo?category=ipo"}
+          href={"/pages/home/ipo"}
           className="flex flex-grow text-nowrap gap-2 items-center"
         >
           <GiTakeMyMoney className="w-5 h-5" />
@@ -63,7 +63,7 @@ const SideBarMenu = ({ className, showMenu }: SideBarMenuPropsTypes) => {
       {/* Market update */}
       <div className="cursor-pointer w-fit h-fit text-light">
         <Link
-          href={"/pages/home/news?category=news"}
+          href={"/pages/home/news"}
           className="flex flex-grow text-nowrap gap-2 items-center"
         >
           <FaRegNewspaper className="w-5 h-5" />
