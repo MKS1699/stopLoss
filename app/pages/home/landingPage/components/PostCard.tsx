@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
+import { createTitleURL } from "@/app/utils/tools";
 interface PostCardPropsTypes {
   post: any;
 }
@@ -14,12 +14,7 @@ const PostCard = ({ post }: PostCardPropsTypes) => {
   }
 
   const postTitle = post?.postTitle;
-  function createTitleURL(title: string): string {
-    const title_lower = title.toLowerCase();
-    const titleArr = title_lower.split(" ");
-    const newTitle = titleArr.join("-");
-    return newTitle;
-  }
+
   return (
     <>
       {/* mobile version */}
