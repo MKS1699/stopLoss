@@ -36,14 +36,14 @@ const NavBar = () => {
       <div className="cursor-pointer w-fit h-fit grid grid-cols-[30%_70%] grid-rows-1 items-center gap-1">
         <GiTakeMyMoney className="w-5 h-5" />
         <h4 className="">
-          <Link href={"/pages/home/ipo?category=ipo"}>IPO</Link>
+          <Link href={"/pages/home/ipo"}>IPO</Link>
         </h4>
       </div>
       {/* Market update */}
       <div className="cursor-pointer w-fit h-fit flex flex-grow text-nowrap gap-1 items-center">
         <FaRegNewspaper className="w-5 h-5" />
         <h4 className="">
-          <Link href="/pages/home/news?category=news">Market Updates</Link>
+          <Link href="/pages/home/news">Market Updates</Link>
         </h4>
       </div>
       {/* Contacts */}

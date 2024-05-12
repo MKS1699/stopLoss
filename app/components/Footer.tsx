@@ -44,7 +44,7 @@ const Footer = () => {
       {/* IPO Menu */}
       <div className="cursor-pointer w-full h-fit ">
         <Link
-          href={"/pages/home/ipo?category=ipo"}
+          href={"/pages/home/ipo"}
           className="flex flex-grow text-nowrap gap-1 items-center justify-around"
         >
           <GiTakeMyMoney className="w-5 h-5" />
@@ -54,7 +54,7 @@ const Footer = () => {
       {/* Market update */}
       <div className="cursor-pointer w-full h-fit ">
         <Link
-          href="/pages/home/news?category=news"
+          href="/pages/home/news"
           className="flex flex-grow text-nowrap gap-1 items-center justify-around"
         >
           <FaRegNewspaper className="w-5 h-5" />

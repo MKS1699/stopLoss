@@ -15,6 +15,7 @@ import MobileMenu from "./MobileMenu";
 import { barlow } from "../utils/fonts";
 // LOGO import
 import LOGO from "@/public/Logo.svg";
+import Link from "next/link";
 
 const TitleBar = () => {
   return (
@@ -33,7 +34,7 @@ const TitleBar = () => {
           className="w-10 h-10 sm:w-14 sm:h-14 self-center justify-self-end"
         />
         <h1 className="text-dark dark:text-light text-5xl  font-thin sm:font-light text-center self-center justify-self-center sm:justify-self-start">
-          STOPLOSS{" "}
+          <Link href="/">STOPLOSS</Link>
           <span className="hidden sm:inline sm:text-sm sm:font-light text-dark dark:text-light lg:hidden">
             One stop solution for your losses
           </span>
