@@ -1,6 +1,7 @@
 "use client";
 
 import { FetchPostsType } from "@/app/api";
+import { createTitleURL } from "@/app/utils/tools";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -22,12 +23,16 @@ const Main = () => {
             postAuthors,
             postDescription,
             postUpdated,
+            postType,
           } = post;
           return (
             <div key={`Post-${category}-${_id}`}>
               <Link
                 href={{
-                  pathname: "/pages/home/articles",
+                  // pathname: "/pages/home/articles",
+                  pathname: `/pages/home/categories/${postType}/${createTitleURL(
+                    postTitle
+                  )}`,
                   query: {
                     id: _id,
                   },
