@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import appSlice from "../slice/appSlice";
+
 import {
   adminPanelSlice,
   appSlice,
@@ -8,6 +8,7 @@ import {
   sessionSlice,
   signUpSlice,
   upcomingIPOEntriesSlice,
+  dataSlice,
 } from "../slice";
 
 export const store = configureStore({
@@ -19,6 +20,7 @@ export const store = configureStore({
     signUp: signUpSlice,
     adminPanel: adminPanelSlice,
     upcomingIPO: upcomingIPOEntriesSlice,
+    data: dataSlice,
   },
 });
 

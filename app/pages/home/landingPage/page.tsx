@@ -1,31 +1,11 @@
-"use client";
-import { PostSection, UpcomingIPO } from "./components";
-import { FetchPostsTypeSize, FetchUpcomingIPOEntries } from "@/app/api";
+import { CenterDiv, LeftDiv, RightDiv } from "./components";
 
 const LandingPage = () => {
-  const BLOG_POSTS = FetchPostsTypeSize({ postType: "blog" });
-  const TUTORIAL_POSTS = FetchPostsTypeSize({ postType: "tutorial" });
-  const IPO_POSTS = FetchPostsTypeSize({ postType: "ipo" });
-  const COMPAnY_PROFILE_POSTS = FetchPostsTypeSize({
-    postType: "company_profile",
-  });
-  const SPONSORED_POSTS = FetchPostsTypeSize({ postType: "sponsored_post" });
-  const NEWS_POSTS = FetchPostsTypeSize({ postType: "news" });
-
-  const upcomingIPO = FetchUpcomingIPOEntries();
   return (
-    <div className="w-full h-full grid grid-flow-row-dense gap-y-4 pt-4">
-      {upcomingIPO.length > 0 && <UpcomingIPO upcomingIPO={upcomingIPO} />}
-      {IPO_POSTS > 0 && <PostSection postType="ipo" limit={10} />}
-      {NEWS_POSTS > 0 && <PostSection postType="news" limit={10} />}
-      {SPONSORED_POSTS > 0 && (
-        <PostSection postType="sponsored_post" limit={10} />
-      )}
-      {BLOG_POSTS > 0 && <PostSection postType="blog" limit={10} />}
-      {COMPAnY_PROFILE_POSTS > 0 && (
-        <PostSection postType="company_profile" limit={10} />
-      )}
-      {TUTORIAL_POSTS > 0 && <PostSection postType="tutorial" limit={10} />}
+    <div className="w-full h-full grid grid-cols-1 md:grid-cols-3 grid-flow-row md:grid-rows-1 mt-2 px-1">
+      <LeftDiv className="row-start-2 md:row-start-1 md:col-start-1" />
+      <CenterDiv className="row-start-1 md:row-start-1 md:col-start-2" />
+      <RightDiv className="row-start-3 md:row-start-1 md:col-start-3" />
     </div>
   );
 };

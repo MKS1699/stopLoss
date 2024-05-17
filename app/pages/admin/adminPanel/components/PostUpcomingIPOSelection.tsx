@@ -4,7 +4,7 @@ import {
   API_POSTS_UPCOMING_IPO_LIST_ENDPOINTS,
   API_POSTS_UPCOMING_IPO_LIST_ROUTE,
   API_URL,
-} from "@/app/api/endPoints";
+} from "@/app/hooks/apiHooks/endPoints";
 import { useAppDispatch, useHeader } from "@/app/hooks";
 import {
   setPostUpcomingIPOCloseDateInfo,

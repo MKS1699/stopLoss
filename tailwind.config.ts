@@ -58,6 +58,22 @@ const config: Config = {
             rotate: "360 deg",
           },
         },
+        skeleton: {
+          from: {
+            backgroundColor: "#DCDCDC",
+          },
+          to: {
+            backGroundColor: "	#C0C0C0",
+          },
+        },
+        pulse: {
+          from: {
+            opacity: "0",
+          },
+          to: {
+            opacity: "1",
+          },
+        },
       },
     },
     animation: {
@@ -66,6 +82,8 @@ const config: Config = {
       rotateNhide: "rotateNhide 0.3s ease-in",
       rotateNshow: "rotateNshow 0.3s ease-in",
       loading: "loading 1s linear infinite",
+      skeleton: "skeleton 1s linear infinite alternate",
+      pulse: "pulse 1s linear infinite",
     },
     colors: {
       light: "#FBFBFF",
