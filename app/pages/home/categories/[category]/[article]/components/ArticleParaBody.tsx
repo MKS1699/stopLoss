@@ -9,7 +9,8 @@ const ArticleParaBody = ({ body }: { body: string }) => {
     <div className="w-full h-fit px-2 text-justify text-base lg:text-lg whitespace-pre-wrap">
       {/* rendering multiple lines of body */}
       {paraArr.map((para: string, index: number) => {
-        if (para !== "") return <p>{para}</p>; // renders content
+        if (para !== "")
+          return <p key={`article-para-${index}`}>{para}</p>; // renders content
         else return <br />; // replaces "/n" -> "" with html <br />
       })}
     </div>

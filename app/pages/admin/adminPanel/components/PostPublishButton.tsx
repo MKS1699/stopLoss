@@ -15,7 +15,7 @@ import {
   API_POSTS_ENDPOINTS,
   API_POSTS_ROUTE,
   API_URL,
-} from "@/app/api/endPoints";
+} from "@/app/hooks/apiHooks/endPoints";
 import axios, { AxiosRequestConfig } from "axios";
 import {
   resetAdminPanelState,

@@ -17,7 +17,7 @@ import {
   API_URL,
   API_USERS_ENDPOINTS,
   API_USERS_ROUTE,
-} from "@/app/api/endPoints";
+} from "@/app/hooks/apiHooks/endPoints";
 import { resetSignUpState } from "@/app/redux/slice/signUpSlice";
 
 interface SignUpFormPropsTypes extends StyledComponent {

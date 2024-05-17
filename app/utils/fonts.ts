@@ -1,7 +1,13 @@
-import { Barlow } from "next/font/google";
+import { Barlow, Pacifico } from "next/font/google";
 const barlow = Barlow({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-export { barlow };
+const pacifico = Pacifico({
+  style: "normal",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+export { barlow, pacifico };

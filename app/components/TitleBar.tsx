@@ -12,7 +12,7 @@ import Image from "next/image";
 import { NavBar, SearchBar, ThemeEnabler } from ".";
 import MobileMenu from "./MobileMenu";
 // font import
-import { barlow } from "../utils/fonts";
+import { barlow, pacifico } from "../utils/fonts";
 // LOGO import
 import LOGO from "@/public/Logo.svg";
 import Link from "next/link";
@@ -33,9 +33,11 @@ const TitleBar = () => {
           sizes="100vw"
           className="w-10 h-10 sm:w-14 sm:h-14 self-center justify-self-end"
         />
-        <h1 className="text-dark dark:text-light text-5xl  font-thin sm:font-light text-center self-center justify-self-center sm:justify-self-start">
-          <Link href="/">STOPLOSS</Link>
-          <span className="hidden sm:inline sm:text-sm sm:font-light text-dark dark:text-light lg:hidden">
+        <h1 className="text-[#4CB050] text-5xl font-thin sm:font-light text-center self-center justify-self-center sm:justify-self-start">
+          <Link href="/" className={`${pacifico.className}`}>
+            stoploss.live
+          </Link>
+          <span className="hidden sm:inline sm:text-sm sm:font-light text-dark dark:text-light lg:hidden px-1">
             One stop solution for your losses
           </span>
         </h1>

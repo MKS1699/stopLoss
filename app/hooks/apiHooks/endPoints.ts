@@ -14,10 +14,13 @@ export const API_USERS_ENDPOINTS = {
 };
 
 export const API_POSTS_ENDPOINTS = {
+  //create post
   createPost: "/createPost",
+  // get post
   getPostById: "/get/id",
   getPostByType: "/get/type",
   getPostByTypeOlder: "/get/type/pagination",
+  getLatestPosts: "/get/latest",
   // for pagination routes
   countPosts: "/count/all",
   countPostsByType: "/count/type",
