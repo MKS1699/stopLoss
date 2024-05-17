@@ -58,7 +58,7 @@ const useGetPostsByType = ({
               posts: response.data.result.posts,
             })
           );
-          // setIsLoading(false);
+          setIsLoading(false);
         })
         .catch((err) => console.log(err));
     };
