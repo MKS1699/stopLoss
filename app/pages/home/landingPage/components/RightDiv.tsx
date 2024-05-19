@@ -25,16 +25,16 @@ const RightDiv = ({ className }: RightDivPropsTypes) => {
       {upcomingIPOEntries.length > 0 && (
         <UpcomingIPO upcomingIPO={upcomingIPOEntries} />
       )}
-      {blog > 0 && <PostSection postType="ipo" key="ipo-posts" limit={10} />}
+      {blog > 0 && <PostSection postType="blog" key="blog-posts" limit={10} />}
       {companyProfile > 0 && (
-        <PostSection postType="news" key="news-posts" limit={10} />
-      )}
-      {tutorial > 0 && (
         <PostSection
-          postType="sponsored_post"
-          key="sponsored-posts"
+          postType="company_profile"
+          key="company-posts"
           limit={10}
         />
+      )}
+      {tutorial > 0 && (
+        <PostSection postType="tutorial" key="tutorial-posts" limit={10} />
       )}
     </div>
   );
