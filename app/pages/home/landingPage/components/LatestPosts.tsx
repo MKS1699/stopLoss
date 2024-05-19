@@ -28,7 +28,8 @@ const LatestPosts = () => {
           </div>
           {latestPosts.map((post: any, index: number) => {
             const { _id } = post;
-            if (index === 0) return <LatestPostCard post={post} />;
+            if (index === 0)
+              return <LatestPostCard post={post} key={`Latest Post-${_id}`} />;
             else return <PostCardList post={post} key={_id} />;
           })}
         </div>

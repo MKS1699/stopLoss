@@ -11,7 +11,7 @@ const ArticleParaBody = ({ body }: { body: string }) => {
       {paraArr.map((para: string, index: number) => {
         if (para !== "")
           return <p key={`article-para-${index}`}>{para}</p>; // renders content
-        else return <br />; // replaces "/n" -> "" with html <br />
+        else return <br key={`line-break-${index}`} />; // replaces "/n" -> "" with html <br />
       })}
     </div>
   );

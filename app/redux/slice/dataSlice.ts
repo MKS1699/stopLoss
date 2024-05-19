@@ -91,7 +91,9 @@ export const dataSlice = createSlice({
     setDataUpcomingIPOEntries: (
       state,
       action: PayloadAction<{ entries: {}[] }>
-    ) => {},
+    ) => {
+      state.upcomingIPOEntries = action.payload.entries;
+    },
 
     // catergory Posts
     setDataCategoryPosts: (

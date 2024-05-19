@@ -13,7 +13,7 @@ const RightDiv = ({ className }: RightDivPropsTypes) => {
   const { isLoading: upcomingIPOEntriesLoading, upcomingIPOEntries } =
     useGetUpcomingIPOEntries();
 
-  const { size: blog } = useGetPostsCategorySizes({ category: "blog" });
+  const { size: ipo } = useGetPostsCategorySizes({ category: "ipo" });
   const { size: companyProfile } = useGetPostsCategorySizes({
     category: "company_profile",
   });
@@ -23,18 +23,14 @@ const RightDiv = ({ className }: RightDivPropsTypes) => {
   return (
     <div className={`flex flex-col justify-evenly ${className}`}>
       {upcomingIPOEntries.length > 0 && (
-        <UpcomingIPO upcomingIPO={upcomingIPOEntries} />
+        <UpcomingIPO className="" key={`desktop-upcoming ipo`} />
       )}
-      {blog > 0 && <PostSection postType="blog" key="blog-posts" limit={10} />}
+      {ipo > 0 && <PostSection postType="ipo" key="ipo-posts" limit={5} />}
       {companyProfile > 0 && (
-        <PostSection
-          postType="company_profile"
-          key="company-posts"
-          limit={10}
-        />
+        <PostSection postType="company_profile" key="company-posts" limit={5} />
       )}
       {tutorial > 0 && (
-        <PostSection postType="tutorial" key="tutorial-posts" limit={10} />
+        <PostSection postType="tutorial" key="tutorial-posts" limit={5} />
       )}
     </div>
   );
