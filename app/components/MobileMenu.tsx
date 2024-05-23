@@ -37,7 +37,9 @@ const MobileMenu = ({ className }: StyledComponent) => {
         onClick={() => setShowMenu(true)}
       />
 
-      {showMenu && <SideBarMenu showMenu={showMenu} />}
+      {showMenu && (
+        <SideBarMenu showMenu={showMenu} handleShowMenu={setShowMenu} />
+      )}
     </div>
   );
 };

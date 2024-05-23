@@ -49,12 +49,16 @@ const NavBar = () => {
       {/* Contacts */}
       <div className="hidden cursor-pointer w-fit h-fit xl:grid grid-cols-[30%_70%] grid-rows-1 items-center gap-0">
         <GrContactInfo className="w-5 h-5" />
-        <h4 className="">Contact</h4>
+        <Link href={"/pages/home/contact"}>
+          <h4 className="">Contact</h4>
+        </Link>
       </div>
       {/* About */}
       <div className="hidden cursor-pointer w-fit h-fit xl:grid grid-cols-[30%_70%] grid-rows-1 items-center gap-0">
         <IoMdInformationCircle className="w-5 h-5" />
-        <h4 className="">About</h4>
+        <Link href={"/pages/home/about"}>
+          <h4 className="">About</h4>
+        </Link>
       </div>
     </div>
   );
