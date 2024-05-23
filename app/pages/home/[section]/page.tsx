@@ -8,11 +8,11 @@ type generateMetadataPropsTypes = {
   params: {
     section: PostSliceTypes["postType"];
   };
-  searchParams: { [key: string]: string | string[] | undefined };
+  // searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export async function generateMetadata({
-  searchParams,
+  // searchParams,
   params,
 }: generateMetadataPropsTypes): Promise<Metadata> {
   const { section }: { section: PostSliceTypes["postType"] } = params;
@@ -44,6 +44,11 @@ export async function generateMetadata({
     title: ` ${SECTION}`,
     description: `This page contains articles related to ${SECTION} category.`,
     keywords: keywordsArr,
+    openGraph: {
+      type: "website",
+      title: `Stoploss.live : ${SECTION}`,
+      description: `This page contains articles related to ${SECTION} category.`,
+    },
   };
 }
 
