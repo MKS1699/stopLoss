@@ -10,11 +10,13 @@ import ArticleDescription from "./ArticleDescription";
 import ArticleInfo from "./ArticleInfo";
 import ArticleParagraphs from "./ArticleParagraphs";
 import ArticleParagraph from "./ArticleParagraph";
+import ArticleShareButtons from "./ArticleShareButtons";
 // Article Paragraph Components
 import ArticleParaHeading from "./ArticleParaHeading";
 import ArticleParaSubHeading from "./ArticleParaSubHeading";
 import ArticleParaBody from "./ArticleParaBody";
 import ArticleTable from "./ArticleTable";
+
 export {
   Article,
   Tags,
@@ -30,4 +32,5 @@ export {
   ArticleParaSubHeading,
   ArticleParaBody,
   ArticleTable,
+  ArticleShareButtons,
 };
