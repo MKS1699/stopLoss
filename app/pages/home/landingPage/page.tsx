@@ -2,7 +2,7 @@ import { CenterDiv, LeftDiv, RightDiv, UpcomingIPO } from "./components";
 
 const LandingPage = () => {
   return (
-    <div className="w-full h-full grid grid-cols-1 md:grid-cols-3 grid-flow-row md:grid-rows-1 mt-2 px-1">
+    <div className="w-full min-h-screen grid grid-cols-1 md:grid-cols-3 grid-flow-row md:grid-rows-1 mt-2 px-1">
       <UpcomingIPO
         key={`mobile-upcoming ipo`}
         className="visible md:hidden row-start-1"
