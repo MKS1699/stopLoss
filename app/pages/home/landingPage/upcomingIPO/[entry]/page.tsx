@@ -1,4 +1,3 @@
-import { Footer, TitleBar } from "@/app/components";
 import { Main } from "./components";
 import { Metadata } from "next";
 type generateMetadataPropsTypes = {
@@ -39,13 +38,7 @@ export async function generateMetadata({
 }
 
 const page = () => {
-  return (
-    <div className="w-full min-h-screen bg-light dark:bg-bodyDark">
-      <TitleBar />
-      <Main />
-      <Footer />
-    </div>
-  );
+  return <Main />;
 };
 
 export default page;
