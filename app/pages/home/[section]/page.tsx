@@ -1,6 +1,4 @@
-import { Footer, TitleBar } from "@/app/components";
 import { Main } from "./components";
-import axios from "axios";
 import { Metadata } from "next";
 import { PostSliceTypes } from "@/app/types/slice_types/postSliceTypes";
 
@@ -53,13 +51,7 @@ export async function generateMetadata({
 }
 
 const page = () => {
-  return (
-    <>
-      <TitleBar />
-      <Main />
-      <Footer />
-    </>
-  );
+  return <Main />;
 };
 
 export default page;

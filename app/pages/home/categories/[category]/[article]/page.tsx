@@ -1,6 +1,4 @@
-import { Footer, TitleBar } from "@/app/components";
 import { Main } from "./components";
-
 import axios from "axios";
 import { Metadata } from "next";
 import {
@@ -53,7 +51,6 @@ export async function generateMetadata({
       url: `https://www.stoploss.live/pages/home/categories/${
         post.postType
       }/${createTitleURL(post.postTitle)}?id=${searchParams?.id}`,
-
       authors: post.postAuthors,
       description: post.postDescription,
       tags: tagsArr,
@@ -63,13 +60,7 @@ export async function generateMetadata({
 }
 
 const page = () => {
-  return (
-    <>
-      <TitleBar />
-      <Main />
-      <Footer />
-    </>
-  );
+  return <Main />;
 };
 
 export default page;

@@ -29,12 +29,17 @@ import Link from "next/link";
 
 interface SideBarMenuPropsTypes extends StyledComponent {
   showMenu: boolean;
+  handleShowMenu: (val: boolean) => void;
 }
 
-const SideBarMenu = ({ className, showMenu }: SideBarMenuPropsTypes) => {
+const SideBarMenu = ({
+  className,
+  showMenu,
+  handleShowMenu,
+}: SideBarMenuPropsTypes) => {
   return (
     <div
-      className={`absolute z-[999] w-[85vw] min-h-screen top-16 bg-opacity-60 bg-dark text-white dark:bg-gray-600 dark:bg-opacity-70 p-4 text-lg transition-all ease-in grid grid-cols-1 grid-flow-row rounded-tr-md ${
+      className={`absolute z-[999] w-[85vw] min-h-screen top-16  bg-dark text-white dark:bg-gray-600 p-4 text-lg transition-all ease-in grid grid-cols-1 grid-flow-row rounded-tr-md backdrop-blur-sm ${
         showMenu ? "animate-sideBarMenuSlideIn" : "animate-sideBarMenuSlideOut"
       }`}
     >
@@ -45,6 +50,7 @@ const SideBarMenu = ({ className, showMenu }: SideBarMenuPropsTypes) => {
         <Link
           href="/"
           className="flex flex-grow text-nowrap gap-2 items-center"
+          onClick={() => handleShowMenu(false)}
         >
           <HiHome className="w-5 h-5" />
           <h4 className="">Home</h4>
@@ -55,6 +61,7 @@ const SideBarMenu = ({ className, showMenu }: SideBarMenuPropsTypes) => {
         <Link
           href={"/pages/home/ipo"}
           className="flex flex-grow text-nowrap gap-2 items-center"
+          onClick={() => handleShowMenu(false)}
         >
           <GiTakeMyMoney className="w-5 h-5" />
           <h4 className="">IPO</h4>
@@ -65,20 +72,33 @@ const SideBarMenu = ({ className, showMenu }: SideBarMenuPropsTypes) => {
         <Link
           href={"/pages/home/news"}
           className="flex flex-grow text-nowrap gap-2 items-center"
+          onClick={() => handleShowMenu(false)}
         >
           <FaRegNewspaper className="w-5 h-5" />
           <h4 className="">Market Updates</h4>
         </Link>
       </div>
       {/* Contacts */}
-      <div className="cursor-pointer w-fit h-fit grid grid-cols-[30%_70%] grid-rows-1 items-center gap-2 text-light">
-        <GrContactInfo className="w-5 h-5" />
-        <h4 className="">Contact</h4>
+      <div className="cursor-pointer w-fit h-fit text-light">
+        <Link
+          href={"/pages/home/contact"}
+          className="flex flex-grow text-nowrap gap-2 items-center"
+          onClick={() => handleShowMenu(false)}
+        >
+          <GrContactInfo className="w-5 h-5" />
+          <h4 className="">Contact</h4>
+        </Link>
       </div>
       {/* About */}
-      <div className="cursor-pointer w-fit h-fit grid grid-cols-[30%_70%] grid-rows-1 items-center gap-2 text-light">
-        <IoMdInformationCircle className="w-5 h-5" />
-        <h4 className="">About</h4>
+      <div className="cursor-pointer w-fit h-fit text-light">
+        <Link
+          href={"/pages/home/about"}
+          className="flex flex-grow text-nowrap gap-2 items-center"
+          onClick={() => handleShowMenu(false)}
+        >
+          <IoMdInformationCircle className="w-5 h-5" />
+          <h4 className="">About</h4>
+        </Link>
       </div>
     </div>
   );

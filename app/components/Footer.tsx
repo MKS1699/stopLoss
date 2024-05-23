@@ -62,14 +62,24 @@ const Footer = () => {
         </Link>
       </div>
       {/* Contacts */}
-      <div className="cursor-pointer w-full h-fit flex flex-grow text-nowrap gap-1 items-center justify-around">
-        <GrContactInfo className="w-5 h-5" />
-        <h4 className="hidden md:block">Contact</h4>
+      <div className="cursor-pointer w-full h-fit ">
+        <Link
+          href="/pages/home/contact"
+          className="flex flex-grow text-nowrap gap-1 items-center justify-around"
+        >
+          <GrContactInfo className="w-5 h-5" />
+          <h4 className="hidden md:block">Contact</h4>
+        </Link>
       </div>
       {/* About */}
-      <div className="cursor-pointer w-full h-fit flex flex-grow text-nowrap gap-1 items-center justify-around">
-        <IoMdInformationCircle className="w-5 h-5" />
-        <h4 className="hidden md:block">About</h4>
+      <div className="cursor-pointer w-full h-fit ">
+        <Link
+          href="/pages/home/about"
+          className="flex flex-grow text-nowrap gap-1 items-center justify-around"
+        >
+          <IoMdInformationCircle className="w-5 h-5" />
+          <h4 className="hidden md:block">About</h4>
+        </Link>
       </div>
     </div>
   );
