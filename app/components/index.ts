@@ -20,7 +20,8 @@ import SearchBar from "./SearchBar";
 import SideBarMenu from "./SideBarMenu";
 import NavBar from "./NavBar";
 import HotToast from "./HotToast";
-
+import Pagination from "./Pagination";
+import Spinner from "./Spinner";
 // exporting components
 export {
   AppScreenSelector,
@@ -33,4 +34,6 @@ export {
   SearchBar,
   SideBarMenu,
   NavBar,
+  HotToast,
+  Pagination,
 };
