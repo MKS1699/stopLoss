@@ -30,6 +30,8 @@ import PostTag from "./PostTag";
 import PostAuthors from "./PostAuthors";
 import PostExternalLinks from "./PostExternalLinks";
 import PostExternalLink from "./PostExternalLink";
+
+import PostPublishDialog from "./PostPublishDialog";
 export {
   AdminTitleBar,
   User,
@@ -62,4 +64,5 @@ export {
   PostAuthors,
   PostExternalLinks,
   PostExternalLink,
+  PostPublishDialog,
 };
