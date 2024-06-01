@@ -8,12 +8,15 @@ import Image from "next/image";
 import toast from "react-hot-toast";
 import { FiEdit2 } from "react-icons/fi";
 import { MdOutlineDelete } from "react-icons/md";
+import DeleteDialog from "./DeleteDialog";
+import { useState } from "react";
 
 interface PostTilePropsTypes extends StyledComponent {
   title: string;
   description: string;
   mainImageLink: string;
   id: string;
+  caption: string;
 }
 
 const PostTile = ({
@@ -21,8 +24,11 @@ const PostTile = ({
   description,
   mainImageLink,
   id,
+  caption,
 }: PostTilePropsTypes) => {
   const guestMode = useAppSelector((state) => state.app.guestMode);
+
+  const [showDeleteDialog, setShowDeleteDialog] = useState<boolean>(false);
 
   function handlePostEditButton() {
     if (!guestMode) {
@@ -32,28 +38,29 @@ const PostTile = ({
     }
   }
   function handlePostDeleteButton() {
-    if (!guestMode) {
-      toast.success(`Deleting Post ${id}`);
-    } else {
+    if (guestMode) {
       toast.error("Can't delete post in guest mode.");
+    } else {
+      setShowDeleteDialog(true);
     }
   }
 
   return (
     <div
-      className={`${barlow.className} font-normal w-full h-full grid grid-cols-[15%_65%_10%_10%] grid-rows-1 text-base border-2 border-solid border-[#003b31] rounded-md`}
+      className={`${barlow.className} font-normal w-full h-20 grid grid-cols-[15%_65%_10%_10%] grid-rows-1 text-base border-2 border-solid border-[#003b31] dark:border-[#4cb050] rounded-md`}
     >
       {/* Main Image of the post */}
       <Image
         src={mainImageLink ? mainImageLink : SAMPLE_IPO}
-        alt="IPO"
-        sizes="100vw"
+        alt={caption}
+        width={500}
+        height={500}
         className="w-full h-full rounded-tl-md rounded-bl-md"
       />
       {/* Title and description of the post */}
-      <div className="w-full h-full grid grid-cols-1 grid-rows-2">
-        <h1 className="w-full h-full">{title}</h1>
-        <p className="w-full h-full">{description}</p>
+      <div className="w-full h-full grid grid-cols-1 grid-rows-2 text-dark dark:text-light">
+        <h1 className="w-full h-full truncate">{title}</h1>
+        <p className="w-full h-full truncate">{description}</p>
       </div>
       {/* Edit Button */}
       <FiEdit2
@@ -75,6 +82,17 @@ const PostTile = ({
         title="Delete Post"
         onClick={handlePostDeleteButton}
       />
+      {/* delete dialog */}
+      {showDeleteDialog && (
+        <DeleteDialog
+          id={id}
+          closeDialog={() => {
+            setShowDeleteDialog(false);
+          }}
+          showDialog={showDeleteDialog}
+          postTitle={title}
+        />
+      )}
     </div>
   );
 };
