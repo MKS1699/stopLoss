@@ -76,12 +76,24 @@ const UserMenu = ({
     setShowUserMenu(false);
   }
 
+  // all posts function
+  function allPosts() {
+    dispatch(changeAdminPanelScreen({ screen: "allPosts" }));
+    setShowUserMenu(false);
+  }
+
   return (
     <div
       className={`${
         showUserMenu ? "grid" : "hidden"
       } absolute w-28 md:w-[85%] h-auto py-3 md:py-2 px-2 bg-[#4cb050]  dark:bg-[#003b31] rounded-md  text-[#003b31] dark:text-[#4cb050] top-28 md:top-0 md:grid-flow-col z-30`}
     >
+      <p
+        className="cursor-pointer mx-1 my-1 text-base md:border-r-2 md:border-r-solid md:border-r-[#003b31] md:dark:border-r-[#4cb050] md:text-center hover:scale-110 transition-all ease-linear "
+        onClick={allPosts}
+      >
+        All Posts
+      </p>
       <p
         className="cursor-pointer mx-1 my-1 text-base md:border-r-2 md:border-r-solid md:border-r-[#003b31] md:dark:border-r-[#4cb050] md:text-center hover:scale-110 transition-all ease-linear "
         onClick={createPost}
