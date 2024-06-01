@@ -50,8 +50,8 @@ const PanelScreen = () => {
         <div
           className={`w-fit h-fit  rounded-md py-2 px-3 text-center grid grid-rows-1 grid-cols-1 self-start justify-self-end ${
             panelScreen === "createPost"
-              ? "cursor-not-allowed bg-gray-500 text-white opacity-60"
-              : "bg-[#003b31] dark:bg-[#4cb050] text-white cursor-pointer"
+              ? "cursor-not-allowed bg-gray-500 text-light opacity-60"
+              : "bg-[#003b31] dark:bg-[#4cb050] text-light cursor-pointer"
           } `}
           onClick={handleNewPost}
         >

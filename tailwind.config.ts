@@ -74,6 +74,14 @@ const config: Config = {
             opacity: "1",
           },
         },
+        spinner: {
+          from: {
+            transform: "rotate(0deg)",
+          },
+          to: {
+            transform: "rotate(360deg)",
+          },
+        },
       },
     },
     animation: {
@@ -84,6 +92,7 @@ const config: Config = {
       loading: "loading 1s linear infinite",
       skeleton: "skeleton 1s linear infinite alternate",
       pulse: "pulse 1s linear infinite",
+      spinner: "spinner 1s linear infinite",
     },
     colors: {
       light: "#FBFBFF",

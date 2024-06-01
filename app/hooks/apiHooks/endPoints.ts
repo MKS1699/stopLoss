@@ -21,6 +21,9 @@ export const API_POSTS_ENDPOINTS = {
   getPostByType: "/get/type",
   getPostByTypeOlder: "/get/type/pagination",
   getLatestPosts: "/get/latest",
+  getPostByUser: "/get/user",
+  // delete post
+  deletePostById: "/delete",
   // for pagination routes
   countPosts: "/count/all",
   countPostsByType: "/count/type",
