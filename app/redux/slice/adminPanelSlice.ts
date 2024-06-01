@@ -5,6 +5,7 @@ const initialState: AdminPanelSliceTypes = {
   panelScreen: "allPosts",
   workingOnPost: false,
   postUploadStatus: "idle",
+  userPosts: [],
 };
 
 const adminPanelSlice = createSlice({
@@ -34,11 +35,27 @@ const adminPanelSlice = createSlice({
     ) => {
       state.postUploadStatus = action.payload;
     },
+    // add user posts
+    setAdminPanelUserPosts: (
+      state,
+      action: PayloadAction<{ posts: {}[][] }>
+    ) => {
+      const { posts } = action.payload;
+      state.userPosts[state.userPosts.length] = posts;
+    },
+    // clear user posts and add new
+    reAddAdminPanelUserPosts: (
+      state,
+      action: PayloadAction<{ posts: {}[] }>
+    ) => {
+      (state.userPosts = []), (state.userPosts[0] = action.payload.posts);
+    },
     // reset all panel data
     resetAdminPanelState: (state) => {
       state.panelScreen = "allPosts";
       state.workingOnPost = false;
       state.postUploadStatus = "idle";
+      state.userPosts = [];
     },
   },
 });
@@ -47,6 +64,8 @@ export const {
   changeAdminPanelScreen,
   changeAdminPanelWorkingOnPost,
   setPostUploadStatus,
+  setAdminPanelUserPosts,
+  reAddAdminPanelUserPosts,
   resetAdminPanelState,
 } = adminPanelSlice.actions;
 export default adminPanelSlice.reducer;
