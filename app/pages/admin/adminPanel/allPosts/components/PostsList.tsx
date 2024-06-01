@@ -1,79 +1,27 @@
 import { PostTile } from ".";
 
-const PostsList = () => {
+interface PostsListPropsTypes {
+  posts: {}[];
+}
+
+const PostsList = ({ posts }: PostsListPropsTypes) => {
   return (
-    <div className="w-full h-full grid grid-flow-row grid-cols-1 gap-1">
-      {/* Post Tile */}
-      <PostTile
-        title="Post title"
-        description="Post desctiption"
-        mainImageLink=""
-        id=""
-        key={""}
-      />
-      <PostTile
-        title="Post title"
-        description="Post desctiption"
-        mainImageLink=""
-        id=""
-        key={""}
-      />
-      <PostTile
-        title="Post title"
-        description="Post desctiption"
-        mainImageLink=""
-        id=""
-        key={""}
-      />
-      <PostTile
-        title="Post title"
-        description="Post desctiption"
-        mainImageLink=""
-        id=""
-        key={""}
-      />
-      <PostTile
-        title="Post title"
-        description="Post desctiption"
-        mainImageLink=""
-        id=""
-        key={""}
-      />
-      <PostTile
-        title="Post title"
-        description="Post desctiption"
-        mainImageLink=""
-        id=""
-        key={""}
-      />
-      <PostTile
-        title="Post title"
-        description="Post desctiption"
-        mainImageLink=""
-        id=""
-        key={""}
-      />
-      <PostTile
-        title="Post title"
-        description="Post desctiption"
-        mainImageLink=""
-        id=""
-        key={""}
-      />
-      <PostTile
-        title="Post title"
-        description="Post desctiption"
-        mainImageLink=""
-        id=""
-        key={""}
-      />
-      <PostTile
-        title="Post title"
-        description="Post desctiption"
-        mainImageLink=""
-        id=""
-        key={""}
-      />
+    <div className="w-full h-full flex flex-col justify-items-start gap-y-2 relative">
+      {posts?.map((post: any, index: number) => {
+        // return index;
+        const { _id, postTitle, postDescription, postImage } = post;
+        const { caption, links } = postImage;
+        return (
+          <PostTile
+            key={`Post Tile ${_id}`}
+            caption={caption}
+            description={postDescription}
+            id={_id}
+            mainImageLink={links.original}
+            title={postTitle}
+          />
+        );
+      })}
     </div>
   );
 };
