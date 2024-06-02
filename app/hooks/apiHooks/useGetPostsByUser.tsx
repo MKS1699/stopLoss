@@ -14,45 +14,39 @@ import { setAdminPanelUserPosts } from "@/app/redux/slice/adminPanelSlice";
 
 interface useGetPostsByUserPropsTypes {
   userId: string;
-  limit?: number;
-  fromLastPostDate?: Date;
 }
 
-const useGetPostsByUser = ({
-  userId,
-  limit,
-  fromLastPostDate,
-}: useGetPostsByUserPropsTypes) => {
+const useGetPostsByUser = ({ userId }: useGetPostsByUserPropsTypes) => {
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const userName = useAppSelector((state) => state.session.userName);
   const userPosts = useAppSelector((state) => state.adminPanel.userPosts);
-  useEffect(() => {
+
+  const getPostsByUser = async () => {
     // const PATH = `${API_DEV}${API_POSTS_ROUTE}${API_POSTS_ENDPOINTS.getPostByUser}`;
     const PATH = `${API_URL}${API_POSTS_ROUTE}${API_POSTS_ENDPOINTS.getPostByUser}`;
+    const res = await axios
+      .post(PATH, {
+        userId,
+      })
+      .then((res) => {
+        if (
+          res.data.result.operation == true &&
+          res.data.result.statusCode == 1
+        ) {
+          toast.success(`Posts fetched for user: ${userName}`);
+          const { posts } = res.data.result;
+          dispatch(setAdminPanelUserPosts({ posts }));
+          setIsLoading(false);
+        }
+      });
+  };
 
-    const fetch = async () => {
-      const res = await axios
-        .post(PATH, {
-          userId,
-          limit,
-          fromLastPostDate,
-        })
-        .then((res) => {
-          if (
-            res.data.result.operation == true &&
-            res.data.result.statusCode == 1
-          ) {
-            toast.success(`Posts fetched for user: ${userName}`);
-            dispatch(setAdminPanelUserPosts({ posts: res.data.result.posts }));
-            setIsLoading(false);
-          }
-        });
-    };
-    fetch();
+  useEffect(() => {
+    getPostsByUser();
   }, []);
 
-  return { userPosts, isLoading };
+  return { userPosts, isLoading, getPostsByUser };
 };
 
 export default useGetPostsByUser;
