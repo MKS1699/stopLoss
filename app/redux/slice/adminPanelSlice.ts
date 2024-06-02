@@ -1,4 +1,5 @@
 import { AdminPanelSliceTypes } from "@/app/types/slice_types/adminPanelSliceTypes";
+import { PostSliceTypes } from "@/app/types/slice_types/postSliceTypes";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: AdminPanelSliceTypes = {
@@ -38,7 +39,7 @@ const adminPanelSlice = createSlice({
     // add user posts
     setAdminPanelUserPosts: (
       state,
-      action: PayloadAction<{ posts: {}[][] }>
+      action: PayloadAction<{ posts: PostSliceTypes[][] | any }>
     ) => {
       const { posts } = action.payload;
       state.userPosts[state.userPosts.length] = posts;
@@ -46,9 +47,10 @@ const adminPanelSlice = createSlice({
     // clear user posts and add new
     reAddAdminPanelUserPosts: (
       state,
-      action: PayloadAction<{ posts: {}[] }>
+      action: PayloadAction<{ posts: PostSliceTypes[][] | any }>
     ) => {
-      (state.userPosts = []), (state.userPosts[0] = action.payload.posts);
+      state.userPosts = [];
+      state.userPosts[0] = action.payload.posts;
     },
     // reset all panel data
     resetAdminPanelState: (state) => {

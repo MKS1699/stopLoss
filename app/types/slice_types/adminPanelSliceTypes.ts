@@ -1,3 +1,5 @@
+import { PostSliceTypes } from "./postSliceTypes";
+
 export interface AdminPanelSliceTypes {
   panelScreen:
     | "allPosts"
@@ -7,5 +9,5 @@ export interface AdminPanelSliceTypes {
     | "panelSettings";
   workingOnPost: boolean;
   postUploadStatus: "idle" | "uploading" | "uploaded";
-  userPosts: {}[][];
+  userPosts: PostSliceTypes[][];
 }
