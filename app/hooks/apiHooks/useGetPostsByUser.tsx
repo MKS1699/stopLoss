@@ -10,7 +10,11 @@ import {
 } from "./endPoints";
 import { useAppDispatch, useAppSelector } from "../storeHooks";
 import toast from "react-hot-toast";
-import { setAdminPanelUserPosts } from "@/app/redux/slice/adminPanelSlice";
+import {
+  resetAdminPanelUserPosts,
+  setAdminPanelUserPosts,
+  setPostsToShow,
+} from "@/app/redux/slice/adminPanelSlice";
 
 interface useGetPostsByUserPropsTypes {
   userId: string;
@@ -36,7 +40,9 @@ const useGetPostsByUser = ({ userId }: useGetPostsByUserPropsTypes) => {
         ) {
           toast.success(`Posts fetched for user: ${userName}`);
           const { posts } = res.data.result;
+          dispatch(resetAdminPanelUserPosts());
           dispatch(setAdminPanelUserPosts({ posts }));
+          dispatch(setPostsToShow({ posts }));
           setIsLoading(false);
         }
       });
