@@ -1,7 +1,8 @@
+import { PostSliceTypes } from "@/app/types/slice_types/postSliceTypes";
 import { PostTile } from ".";
 
 interface PostsListPropsTypes {
-  posts: {}[];
+  posts: PostSliceTypes[];
 }
 
 const PostsList = ({ posts }: PostsListPropsTypes) => {
