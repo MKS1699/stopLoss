@@ -3,9 +3,10 @@ import { PostTile } from ".";
 
 interface PostsListPropsTypes {
   posts: PostSliceTypes[];
+  updateIsPostDeleted: () => void;
 }
 
-const PostsList = ({ posts }: PostsListPropsTypes) => {
+const PostsList = ({ posts, updateIsPostDeleted }: PostsListPropsTypes) => {
   return (
     <div className="w-full h-full flex flex-col justify-items-start gap-y-2 relative">
       {posts?.map((post: any, index: number) => {
@@ -20,6 +21,7 @@ const PostsList = ({ posts }: PostsListPropsTypes) => {
             id={_id}
             mainImageLink={links.original}
             title={postTitle}
+            updateIsPostDeleted={updateIsPostDeleted}
           />
         );
       })}

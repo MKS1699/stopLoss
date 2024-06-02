@@ -10,4 +10,5 @@ export interface AdminPanelSliceTypes {
   workingOnPost: boolean;
   postUploadStatus: "idle" | "uploading" | "uploaded";
   userPosts: PostSliceTypes[][];
+  postsToShow: PostSliceTypes[];
 }
