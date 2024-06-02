@@ -30,12 +30,14 @@ interface PaginationPropsTypes {
   currPage: number;
   updateCurrPage: (page: number) => void;
   makePagesOf: any[];
+  updatePostsToShow: () => void;
 }
 
 const Pagination = ({
   currPage,
   updateCurrPage,
   makePagesOf,
+  updatePostsToShow,
 }: PaginationPropsTypes) => {
   const [maxPages, setMaxPages] = useState<number>(0);
 
@@ -60,7 +62,7 @@ const Pagination = ({
       pages[i] = i + 1;
     }
     setAllPages(pages);
-  }, []);
+  }, [makePagesOf]);
 
   // handling previous page btn fn
   function handlePrevBtn(currentPage: number): void {
@@ -132,79 +134,88 @@ const Pagination = ({
     showPageBtns();
   }, [currPage, maxPages, allPages]);
 
+  // updatingPosts to show based on currPage
+  useEffect(() => {
+    if (currPage >= 1) {
+      updatePostsToShow();
+    }
+  }, [currPage]);
+
   return (
     <div className="container mx-auto w-auto grid grid-rows-1 grid-cols-11 items-center justify-center gap-x-1">
-      {maxPages > 1 && (
-        <>
-          {/* previous page button */}
+      {/* {maxPages > 1 && (
+        <> */}
+      {/* previous page button */}
+      <div
+        className="px-2 py-1 w-10 h-10 text-dark dark:text-light rounded-md cursor-pointer grid grid-cols-1 grid-rows-1 items-center justify-center"
+        onClick={() => handlePrevBtn(currPage)}
+        title="Go to previous page."
+      >
+        <GrPrevious />
+      </div>
+      {/* specific pages buttons */}
+      {/* first 2 btns */}
+      {pageBtnsToShow.firstBatch.map((page: number) => {
+        return (
           <div
-            className="px-2 py-1 w-10 h-10 text-dark dark:text-light rounded-md cursor-pointer grid grid-cols-1 grid-rows-1 items-center justify-center"
-            onClick={() => handlePrevBtn(currPage)}
-            title="Go to previous page."
+            className={`px-2 py-1 w-10 h-10 text-dark dark:text-light rounded-md border-2 border-solid border-dark cursor-pointer text-center ${
+              currPage == page ? "bg-dark text-light" : ""
+            }`}
+            key={`Page-btn-${page}`}
+            onClick={() => updateCurrPage(page)}
           >
-            <GrPrevious />
+            {page}
           </div>
-          {/* specific pages buttons */}
-          {/* first 2 btns */}
-          {pageBtnsToShow.firstBatch.map((page: number) => {
-            return (
-              <div
-                className={`px-2 py-1 w-10 h-10 text-dark dark:text-light rounded-md border-2 border-solid border-dark cursor-pointer text-center ${
-                  currPage == page ? "bg-dark text-light" : ""
-                }`}
-                key={`Page-btn-${page}`}
-                onClick={() => updateCurrPage(page)}
-              >
-                {page}
-              </div>
-            );
-          })}
-          {/* separator */}
-          <div className="px-2 text-dark dark:text-light rounded-md  w-fit h-fit cursor-pointer">
-            ...
-          </div>
-          {/* middle 3 btns */}
-          {pageBtnsToShow.middleBatch.map((page: number) => {
-            return (
-              <div
-                className={`px-2 py-1 w-10 h-10 text-dark dark:text-light rounded-md border-2 border-solid border-dark cursor-pointer text-center ${
-                  currPage == page ? "bg-dark text-light" : ""
-                }`}
-                key={`Page-btn-${page}`}
-                onClick={() => updateCurrPage(page)}
-              >
-                {page}
-              </div>
-            );
-          })}
-          {/* separator */}
-          <div className="px-2 text-dark dark:text-light rounded-md  w-fit h-fit cursor-pointer">
-            ...
-          </div>
-          {/* last 2 btns */}
-          {pageBtnsToShow.lastBatch.map((page: number) => {
-            return (
-              <div
-                className={`px-2 py-1 w-10 h-10 text-dark dark:text-light rounded-md border-2 border-solid border-dark cursor-pointer text-center ${
-                  currPage == page ? "bg-dark text-light" : ""
-                }`}
-                key={`Page-btn-${page}`}
-                onClick={() => updateCurrPage(page)}
-              >
-                {page}
-              </div>
-            );
-          })}
-          {/* next page button */}
+        );
+      })}
+      {/* separator */}
+      <div className="px-2 text-dark dark:text-light rounded-md  w-fit h-fit cursor-pointer">
+        ...
+      </div>
+      {/* middle 3 btns */}
+      {pageBtnsToShow.middleBatch.map((page: number) => {
+        if (page > 0) {
+          return (
+            <div
+              className={`px-2 py-1 w-10 h-10 text-dark dark:text-light rounded-md border-2 border-solid border-dark cursor-pointer text-center ${
+                currPage == page ? "bg-dark text-light" : ""
+              }`}
+              key={`Page-btn-${page}`}
+              onClick={() => updateCurrPage(page)}
+            >
+              {page}
+            </div>
+          );
+        }
+      })}
+      {/* separator */}
+      <div className="px-2 text-dark dark:text-light rounded-md  w-fit h-fit cursor-pointer">
+        ...
+      </div>
+      {/* last 2 btns */}
+      {pageBtnsToShow.lastBatch.map((page: number) => {
+        return (
           <div
-            className="px-2 py-1 w-10 h-10 text-dark dark:text-light rounded-md cursor-pointer grid grid-cols-1 grid-rows-1 items-center justify-center"
-            onClick={() => handleNextBtn(currPage)}
-            title="Go to next page"
+            className={`px-2 py-1 w-10 h-10 text-dark dark:text-light rounded-md border-2 border-solid border-dark cursor-pointer text-center ${
+              currPage == page ? "bg-dark text-light" : ""
+            }`}
+            key={`Page-btn-${page}`}
+            onClick={() => updateCurrPage(page)}
           >
-            <GrNext />
+            {page}
           </div>
-        </>
-      )}
+        );
+      })}
+      {/* next page button */}
+      <div
+        className="px-2 py-1 w-10 h-10 text-dark dark:text-light rounded-md cursor-pointer grid grid-cols-1 grid-rows-1 items-center justify-center"
+        onClick={() => handleNextBtn(currPage)}
+        title="Go to next page"
+      >
+        <GrNext />
+      </div>
+      {/* </>
+      )} */}
     </div>
   );
 };

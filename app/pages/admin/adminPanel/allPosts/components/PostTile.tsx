@@ -17,6 +17,7 @@ interface PostTilePropsTypes extends StyledComponent {
   mainImageLink: string;
   id: string;
   caption: string;
+  updateIsPostDeleted: () => void;
 }
 
 const PostTile = ({
@@ -25,6 +26,7 @@ const PostTile = ({
   mainImageLink,
   id,
   caption,
+  updateIsPostDeleted,
 }: PostTilePropsTypes) => {
   const guestMode = useAppSelector((state) => state.app.guestMode);
 
@@ -91,6 +93,7 @@ const PostTile = ({
           }}
           showDialog={showDeleteDialog}
           postTitle={title}
+          updateIsPostDeleted={updateIsPostDeleted}
         />
       )}
     </div>

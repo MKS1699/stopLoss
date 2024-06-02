@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   API_DEV,
   API_POSTS_ENDPOINTS,
@@ -12,8 +12,12 @@ import { useAppDispatch, useAppSelector } from "../storeHooks";
 import toast from "react-hot-toast";
 import {
   reAddAdminPanelUserPosts,
+  resetAdminPanelUserPosts,
   setAdminPanelUserPosts,
+  setPostsToShow,
 } from "@/app/redux/slice/adminPanelSlice";
+import useGetMorePostsByUser from "./useGetMorePostsByUser";
+import useGetNumOfPostsByUser from "./useGetNumOfPostsByUser";
 
 /* This is a custom hook to delete post by id
  *
@@ -36,6 +40,16 @@ const useDeletePostById = () => {
   >("start");
 
   const userId = useAppSelector((state) => state.session.userId);
+  const { getMorePostsByUser } = useGetMorePostsByUser();
+  const { numberOfPostsByUser } = useGetNumOfPostsByUser();
+  // fetching more posts by user
+  useEffect(() => {
+    if (numberOfPostsByUser > 10) {
+      if (postDeleteStatus == "deleted") {
+        getMorePostsByUser();
+      }
+    }
+  }, [postDeleteStatus, numberOfPostsByUser]);
 
   const deletePost = async (postId: string) => {
     setPostDeleteStatus("processing");
@@ -58,6 +72,8 @@ const useDeletePostById = () => {
         if (res.status == 201) {
           setPostDeleteStatus("deleted");
           toast.success("Post deleted successfully.");
+          // resetting all userPosts list
+          dispatch(resetAdminPanelUserPosts());
         }
       });
 
@@ -69,6 +85,7 @@ const useDeletePostById = () => {
       .then((res) => {
         const posts = res.data.result.posts;
         dispatch(reAddAdminPanelUserPosts({ posts }));
+        dispatch(setPostsToShow({ posts }));
       });
   };
   return { postDeleteStatus, deletePost };

@@ -1,4 +1,5 @@
 import { AdminPanelSliceTypes } from "@/app/types/slice_types/adminPanelSliceTypes";
+import { PostSliceTypes } from "@/app/types/slice_types/postSliceTypes";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: AdminPanelSliceTypes = {
@@ -6,6 +7,7 @@ const initialState: AdminPanelSliceTypes = {
   workingOnPost: false,
   postUploadStatus: "idle",
   userPosts: [],
+  postsToShow: [],
 };
 
 const adminPanelSlice = createSlice({
@@ -38,7 +40,7 @@ const adminPanelSlice = createSlice({
     // add user posts
     setAdminPanelUserPosts: (
       state,
-      action: PayloadAction<{ posts: {}[][] }>
+      action: PayloadAction<{ posts: PostSliceTypes[][] | any }>
     ) => {
       const { posts } = action.payload;
       state.userPosts[state.userPosts.length] = posts;
@@ -46,9 +48,20 @@ const adminPanelSlice = createSlice({
     // clear user posts and add new
     reAddAdminPanelUserPosts: (
       state,
-      action: PayloadAction<{ posts: {}[] }>
+      action: PayloadAction<{ posts: PostSliceTypes[][] | any }>
     ) => {
-      (state.userPosts = []), (state.userPosts[0] = action.payload.posts);
+      state.userPosts = [];
+      state.userPosts[0] = action.payload.posts;
+    },
+    resetAdminPanelUserPosts: (state) => {
+      state.userPosts = [];
+    },
+    // update posts to show
+    setPostsToShow: (
+      state,
+      action: PayloadAction<{ posts: PostSliceTypes[] }>
+    ) => {
+      state.postsToShow = action.payload.posts;
     },
     // reset all panel data
     resetAdminPanelState: (state) => {
@@ -56,6 +69,7 @@ const adminPanelSlice = createSlice({
       state.workingOnPost = false;
       state.postUploadStatus = "idle";
       state.userPosts = [];
+      state.postsToShow = [];
     },
   },
 });
@@ -66,6 +80,8 @@ export const {
   setPostUploadStatus,
   setAdminPanelUserPosts,
   reAddAdminPanelUserPosts,
+  resetAdminPanelUserPosts,
+  setPostsToShow,
   resetAdminPanelState,
 } = adminPanelSlice.actions;
 export default adminPanelSlice.reducer;
