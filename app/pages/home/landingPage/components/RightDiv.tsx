@@ -6,6 +6,7 @@ import {
 } from "@/app/hooks/apiHooks";
 import { PostSection, UpcomingIPO } from ".";
 import { CenterDivropsTypes } from "./CenterDiv";
+import { useAppSelector } from "@/app/hooks";
 
 interface RightDivPropsTypes extends CenterDivropsTypes {}
 
@@ -20,6 +21,7 @@ const RightDiv = ({ className }: RightDivPropsTypes) => {
   const { size: tutorial } = useGetPostsCategorySizes({
     category: "tutorial",
   });
+
   return (
     <div className={`flex flex-col justify-evenly ${className}`}>
       {upcomingIPOEntries.length > 0 && (

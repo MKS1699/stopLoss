@@ -1,5 +1,5 @@
 export interface DATASLICETYPES {
-  latestPosts: {}[];
+  latestPosts: {}[] | any;
   post: {};
   postsSizes: {
     ipo: number;
@@ -10,12 +10,12 @@ export interface DATASLICETYPES {
     companyProfile: number;
   };
   categoryPosts: {
-    ipoPosts: {}[];
-    newsPosts: {}[];
-    blogPosts: {}[];
-    tutorialPosts: {}[];
-    sponsoredPosts: {}[];
-    companyProfilePosts: {}[];
+    ipoPosts: {}[] | any;
+    newsPosts: {}[] | any;
+    blogPosts: {}[] | any;
+    tutorialPosts: {}[] | any;
+    sponsoredPosts: {}[] | any;
+    companyProfilePosts: {}[] | any;
   };
   upcomingIPOEntries:
     | {
