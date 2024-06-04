@@ -3,6 +3,7 @@
 import { useGetPostsCategorySizes } from "@/app/hooks/apiHooks";
 import { PostSection } from ".";
 import { CenterDivropsTypes } from "./CenterDiv";
+import { useAppSelector } from "@/app/hooks";
 interface LeftDivProps extends CenterDivropsTypes {}
 const LeftDiv = ({ className }: LeftDivProps) => {
   const { size: blog } = useGetPostsCategorySizes({ category: "blog" });
@@ -10,6 +11,7 @@ const LeftDiv = ({ className }: LeftDivProps) => {
   const { size: sponsoredPost } = useGetPostsCategorySizes({
     category: "sponsored_post",
   });
+
   return (
     <div className={`flex flex-col justify-evenly ${className}`}>
       {blog > 0 && <PostSection postType="blog" key="blog-posts" limit={5} />}

@@ -6,6 +6,7 @@ import useGetPost from "./useGetPost";
 import usePostPublishSave from "./usePostPublishSave";
 import useGetNumOfPostsByUser from "./useGetNumOfPostsByUser";
 import useGetMorePostsByUser from "./useGetMorePostsByUser";
+import useGetLatestPostsIds from "./useGetLatestPostsIds";
 export {
   useGetLatestPosts,
   useGetPostsCategorySizes,
@@ -15,4 +16,5 @@ export {
   usePostPublishSave,
   useGetNumOfPostsByUser,
   useGetMorePostsByUser,
+  useGetLatestPostsIds,
 };
