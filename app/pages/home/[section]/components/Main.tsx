@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { PostCardList } from "../../components";
 import { useGetPostsByType } from "@/app/hooks/apiHooks";
+import { createTitleURL } from "@/app/utils/tools";
 
 const Main = () => {
   const params = useParams();
   const category: any = params.section;
-
+  const router = useRouter();
   const { isLoading, posts } = useGetPostsByType({
     postType: category,
     limit: 10,
@@ -46,6 +47,13 @@ const Main = () => {
               postUpdated,
               postType,
             } = post;
+            // prefetching the post
+            router.prefetch(
+              `/pages/home/categories/${postType}/${createTitleURL(
+                postTitle
+              )}?id=${_id}`
+            );
+            // adding new batch to post based on which post is latest
             if (index === 0)
               return <PostCardList post={post} showNewBadge key={_id} />;
             else return <PostCardList post={post} key={_id} />;
