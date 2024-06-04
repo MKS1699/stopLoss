@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { PostCardList } from "../../components";
 import { useGetPostsByType } from "@/app/hooks/apiHooks";
 import { createTitleURL } from "@/app/utils/tools";
+import { useEffect } from "react";
 
 const Main = () => {
   const params = useParams();
@@ -15,6 +16,19 @@ const Main = () => {
     limit: 10,
   });
 
+  // need to prefetch posts here based on isLoading
+  useEffect(() => {
+    if (!isLoading) {
+      posts.map((post: any) => {
+        const { _id: id, postTitle, postType } = post;
+        router.prefetch(
+          `/pages/home/categories/${postType}/${createTitleURL(
+            postTitle
+          )}?id=${id}`
+        );
+      });
+    }
+  }, [router, isLoading]);
   return (
     <div className="w-full min-h-screen pt-3">
       {/* Currently this page has no more than 1 section but will be divided into more once there is hell lot for content available */}
@@ -47,13 +61,7 @@ const Main = () => {
               postUpdated,
               postType,
             } = post;
-            // prefetching the post
-            router.prefetch(
-              `/pages/home/categories/${postType}/${createTitleURL(
-                postTitle
-              )}?id=${_id}`
-            );
-            // adding new batch to post based on which post is latest
+            // adding `new badge` to post based on which post is latest
             if (index === 0)
               return <PostCardList post={post} showNewBadge key={_id} />;
             else return <PostCardList post={post} key={_id} />;
