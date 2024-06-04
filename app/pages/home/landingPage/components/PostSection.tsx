@@ -4,6 +4,7 @@ import { PostCardList } from "../../components";
 import { useGetLatestPostsIds, useGetPostsByType } from "@/app/hooks/apiHooks";
 import { pacifico } from "@/app/utils/fonts";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { CiViewList } from "react-icons/ci";
 interface PostSectionPropsTypes {
   postType:
@@ -17,6 +18,8 @@ interface PostSectionPropsTypes {
 }
 
 const PostSection = ({ postType, limit = -1 }: PostSectionPropsTypes) => {
+  const router = useRouter();
+
   const { isLoading, posts } = useGetPostsByType({ limit, postType });
   const POSTTYPE = (postType: PostSectionPropsTypes["postType"]) => {
     if (postType === "blog") {
@@ -36,16 +39,18 @@ const PostSection = ({ postType, limit = -1 }: PostSectionPropsTypes) => {
 
   const { latestPostsIds } = useGetLatestPostsIds();
 
+  useEffect(() => {
+    // prefetching posts category list page
+    router.prefetch(`/pages/home/${postType}`);
+  }, [router]);
+
   return (
     <div className="w-auto h-fit flex flex-col px-2 gap-2 mt-4">
       <div
         className={`${pacifico.className} w-full h-fit text-center text-lg italic text-dark dark:text-light
         flex flex-row items-center justify-start gap-x-2 cursor-pointer hover:underline
         `}
-        onClick={() => {
-          console.log("clicked", postType);
-          // to do route change
-        }}
+        onClick={() => router.push(`/pages/home/${postType}`)}
       >
         {POSTTYPE(postType)}
         <CiViewList />
