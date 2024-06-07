@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { useAppDispatch, useAppSelector, useRememberMe } from "@/app/hooks";
 import { setLoginUserName } from "@/app/redux/slice/loginSlice";
 import { barlow } from "@/app/utils/fonts";
 import React, { useEffect, useState } from "react";
@@ -17,11 +17,28 @@ const NameField = ({ className, slice, nameId }: NameFieldPropsTypes) => {
 
   const LoginStatus = useAppSelector((state) => state.app.loginStatus);
 
+  const rememberMe = useAppSelector((state) => state.app.rememberMe);
+
+  const { getStoredUserName } = useRememberMe();
+
   useEffect(() => {
-    if (slice === "login") {
+    if (slice === "login" && !rememberMe) {
       setUserName("");
     }
+    if (slice === "login" && rememberMe) {
+      const user = getStoredUserName();
+      setUserName(user.userName);
+    }
   }, [LoginStatus]);
+
+  useEffect(() => {
+    if (!rememberMe) {
+      setUserName("");
+    } else {
+      const user = getStoredUserName();
+      setUserName(user.userName);
+    }
+  }, [rememberMe]);
 
   useEffect(() => {
     if (userName.length >= 4 && userName.length <= 10) {

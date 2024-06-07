@@ -8,7 +8,7 @@ import {
   PasswordField,
   RememberMe,
 } from ".";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { useAppDispatch, useAppSelector, useRememberMe } from "@/app/hooks";
 import {
   setAdminScreen,
   setAppAdminLoginStatus,
@@ -51,6 +51,15 @@ const LoginForm = ({
     (state) => state.login.userPassword
   );
 
+  const rememberMe = useAppSelector((state) => state.app.rememberMe);
+  const { storeCurrentUserName } = useRememberMe();
+
+  function handleRememberMe() {
+    if (rememberMe) {
+      storeCurrentUserName(userName);
+    }
+  }
+
   const handleLogin = async (): Promise<void> => {
     const isNameValidated = validateCredentials(userName, "name");
     const isPasswordValidated = validateCredentials(userPassword, "password");
@@ -75,6 +84,7 @@ const LoginForm = ({
           dispatch(setSessionUserId({ userId }));
           dispatch(setSessionUserName({ userName }));
           dispatch(setAppAdminLoginStatus({ loginStatus: true }));
+          handleRememberMe();
           dispatch(resetLoginSlice());
           dispatch(setAdminScreen({ screen: "adminPanel" }));
           // showing successful login notification

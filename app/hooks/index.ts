@@ -10,6 +10,7 @@ import usePostValidation from "./usePostValidation";
 import useHeader from "./useHeader";
 import useGetPostsByUser from "./apiHooks/useGetPostsByUser";
 import useDeletePostById from "./apiHooks/useDeletePostById";
+import useRememberMe from "./useRememberMe";
 export {
   useAppDispatch,
   useAppSelector,
@@ -19,4 +20,5 @@ export {
   useHeader,
   useGetPostsByUser,
   useDeletePostById,
+  useRememberMe,
 };

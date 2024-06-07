@@ -1,8 +1,9 @@
 "use client";
-import { useAppDispatch } from "@/app/hooks";
+import { useAppDispatch, useAppSelector, useRememberMe } from "@/app/hooks";
 import {
   setAdminScreen,
   setAppAdminGuestMode,
+  toggleRememberMe,
 } from "@/app/redux/slice/appSlice";
 import toast from "react-hot-toast";
 /* Component - About & Usage
@@ -16,6 +17,7 @@ import toast from "react-hot-toast";
 
 import { TbUserExclamation } from "react-icons/tb";
 import { IoAlert } from "react-icons/io5";
+import { useState } from "react";
 const RememberMe = ({ checkBoxId }: { checkBoxId: string }) => {
   /* "checkBoxId" - Prop explanation & usage
    * checkBoxId prop will let the label target its specific
@@ -38,7 +40,8 @@ const RememberMe = ({ checkBoxId }: { checkBoxId: string }) => {
       }
     );
   }
-
+  const rememberMe = useAppSelector((state) => state.app.rememberMe);
+  const { storeCurrentUserName, getStoredUserName } = useRememberMe();
   return (
     <div className="w-full h-full grid grid-cols-[40%_25%_35%] grid-rows-1 text-base items-center md:text-sm xl:text-base">
       {/* Remember Me  main component */}
@@ -47,6 +50,8 @@ const RememberMe = ({ checkBoxId }: { checkBoxId: string }) => {
           type="checkbox"
           id={checkBoxId}
           className="cursor-pointer w-3 h-3 mr-1 outline-none text-[#355B3E]"
+          checked={rememberMe}
+          onChange={() => dispatch(toggleRememberMe())}
         />
         <label htmlFor={checkBoxId} className="text-light cursor-pointer">
           Remember me
