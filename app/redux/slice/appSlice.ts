@@ -9,6 +9,7 @@ const initialState: AppSliceTypes = {
   loginStatus: false,
   guestMode: false,
   loadingState: true,
+  rememberMe: true,
 };
 
 export const appSlice = createSlice({
@@ -59,6 +60,10 @@ export const appSlice = createSlice({
     toggleLoadingState: (state) => {
       state.loadingState = !state.loadingState;
     },
+    // toggle RemeberMe:
+    toggleRememberMe: (state) => {
+      state.rememberMe = !state.rememberMe;
+    },
     // reset app State
     resetAppState: (state) => {
       state.adminScreen = "login";
@@ -67,6 +72,7 @@ export const appSlice = createSlice({
       state.guestMode = false;
       state.loginStatus = false;
       state.loadingState = true;
+      state.rememberMe = true;
     },
   },
 });
@@ -78,6 +84,7 @@ export const {
   setAppAdminLoginStatus,
   setAppAdminGuestMode,
   toggleLoadingState,
+  toggleRememberMe,
   resetAppState,
 } = appSlice.actions;
 

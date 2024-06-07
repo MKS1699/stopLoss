@@ -5,4 +5,5 @@ export interface AppSliceTypes {
   loginStatus: boolean;
   guestMode: boolean;
   loadingState: boolean;
+  rememberMe: boolean;
 }
