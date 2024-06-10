@@ -24,18 +24,22 @@ const NameField = ({ className, slice, nameId }: NameFieldPropsTypes) => {
   useEffect(() => {
     if (slice === "login") {
       setUserName("");
+      dispatch(setLoginUserName({ userName }));
     }
   }, [LoginStatus]);
 
   useEffect(() => {
     if (!rememberMe) {
       setUserName("");
+      dispatch(setLoginUserName({ userName }));
     } else {
       const user = getStoredUserName();
       if (user && user?.userName) {
         setUserName(user.userName);
+        dispatch(setLoginUserName({ userName }));
       } else {
         setUserName("");
+        dispatch(setLoginUserName({ userName }));
       }
     }
   }, [rememberMe]);
