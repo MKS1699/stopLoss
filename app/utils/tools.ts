@@ -28,7 +28,7 @@ export function createTitleURL(title: string): string {
 
 // converts a given string into Indian Number System format
 // example : 12345 -> 12,345 , 12345.67 -> 12,345.67
-function createINRString(val: string | number): string {
+export function createINRString(val: string | number): string {
   // checking for decimal string
   const isDecimal = val.toString().includes(".");
 
