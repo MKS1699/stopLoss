@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { ResponsiveContainer, PieChart, Pie, Cell, Legend } from "recharts";
-import { Slider } from "../../components";
+import { Slider } from ".";
 import { createINRString } from "@/app/utils/tools";
 import toast from "react-hot-toast";
 
-export const Main = () => {
+export const EMI = () => {
   const [loanAmount, setLoanAmount] = useState<number>(1000000); // principal
   const [loanInterest, setLoanInterest] = useState<string>("10.0"); // rate
   const [loanTenure, setLoanTenure] = useState<number>(10); // time
@@ -16,7 +16,7 @@ export const Main = () => {
   // minimum & maximum of data
   // [minimum, maximum]
   const [minmaxLA, setMinMaxLA] = useState<[number, number]>([100, 10000000]);
-  const [minmaxLI, setMinMaxLI] = useState<[number, number]>([5.0, 30.0]);
+  const [minmaxLI, setMinMaxLI] = useState<[number, number]>([1.0, 30.0]);
   const [minmaxLT, setMinMaxLT] = useState<[number, number]>([1, 30]);
 
   // data format for pie chart
