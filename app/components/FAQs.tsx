@@ -22,8 +22,8 @@ const FAQ = ({ faq }: FAQPropTypes) => {
   const [show, setShow] = useState<boolean>(false);
   const [answer, setAnswer] = useState<string[]>(faq.a.split("."));
   return (
-    <div className=" md:mx-auto w-full md:w-4/5 h-auto px-2 flex flex-col my-3 bg-light dark:bg-bodyDark shadow-xl rounded-md py-4">
-      <div className="w-full h-fit flex flex-row justify-between items-center">
+    <div className=" md:mx-auto w-full md:w-4/5 h-auto px-2 flex flex-col my-3 bg-light dark:bg-bodyDark shadow-xl rounded-md py-4 dark:shadow-dark">
+      <div className="w-full h-fit flex flex-row justify-between items-center ">
         <div
           className="w-fit h-auto text-xl lg:text-4xl text-left text-dark dark:text-light px-2 font-light cursor-pointer"
           onClick={() => setShow(!show)}
@@ -31,7 +31,7 @@ const FAQ = ({ faq }: FAQPropTypes) => {
           {faq.q}
         </div>
         <div
-          className="w-fit h-fit flex-none flex items-center justify-around mr-3 cursor-pointer"
+          className="w-fit h-fit flex-none flex items-center justify-around mr-3 cursor-pointer text-dark dark:text-light"
           onClick={() => setShow(!show)}
         >
           {show && <FaAngleUp />}
