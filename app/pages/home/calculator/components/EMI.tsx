@@ -4,8 +4,12 @@ import { ResponsiveContainer, PieChart, Pie, Cell, Legend } from "recharts";
 import { Slider } from ".";
 import { createINRString } from "@/app/utils/tools";
 import toast from "react-hot-toast";
+import { useParams } from "next/navigation";
+import Link from "next/link";
 
 export const EMI = () => {
+  const params = useParams();
+
   const [loanAmount, setLoanAmount] = useState<number>(1000000); // principal
   const [loanInterest, setLoanInterest] = useState<string>("10.0"); // rate
   const [loanTenure, setLoanTenure] = useState<number>(10); // time
@@ -167,11 +171,36 @@ export const EMI = () => {
   }, [loanAmount, loanInterest, loanTenure, isLA, isLI, isLT]);
 
   const PIEFILLS = ["#00C49F", "#FF8042"];
+  const validParams = ["car", "emi", "home"];
   return (
     <div className="w-full min-h-screen flex flex-col gap-2 justify-evenly dark:text-light">
       {/* heading */}
-      <div className="w-full h-auto text-3xl font-medium text-center">
-        EMI Calculator
+      <div className="w-full h-auto text-3xl font-medium text-center flex flex-col p-2 gap-1">
+        <div className="w-full h-fit bg-[#F2F4F7] dark:bg-bodyDark dark:border-2 dark:border-[#F2F4F7] dark:border-solid">
+          {params.emiCalculator === "emi"
+            ? "EMI Calculator"
+            : params.emiCalculator === "car"
+            ? "Car Loan EMI "
+            : "Home Loan EMI "}
+          {/* main calculator */}
+        </div>
+        {/* related calculator Links */}
+        <div className="w-full h-auto text-2xl font-normal flex flex-row justify-evenly gap-1">
+          {validParams.map((validParam: string, index: number) => {
+            if (validParam !== params.emiCalculator) {
+              return (
+                <Link
+                  href={`/pages/home/calculator/emi/${validParam}`}
+                  className="bg-[#F2F4F7] dark:bg-bodyDark w-full cursor-pointer dark:border-2 dark:border-[#F2F4F7] dark:border-solid p-1"
+                >
+                  {validParam === "emi" && "EMI Calculator"}
+                  {validParam === "car" && "Car Loan EMI"}
+                  {validParam === "home" && "Home Loan EMI"}
+                </Link>
+              );
+            }
+          })}
+        </div>
       </div>
       {/* emi calculation related inputs */}
       <div className="w-full h-auto flex flex-col px-2 gap-2">
@@ -262,7 +291,7 @@ export const EMI = () => {
       </div>
       {/* loan Details */}
       <div className="mx-auto w-4/5 h-auto shadow-md flex flex-col gap-1">
-        <div className="w-full h-auto flex flex-row justify-between bg-[#F2F4F7] dark:bg-bodyDark px-2 py-1">
+        <div className="w-full h-auto flex flex-row justify-between bg-[#F2F4F7] dark:bg-bodyDark px-2 py-1 dark:border-2 dark:border-[#F2F4F7] dark:border-solid">
           <div className="text-base md:text-lg">Monthly EMI</div>
           <div
             className={`text-xl md:text-2xl font-medium ${
@@ -277,7 +306,7 @@ export const EMI = () => {
         </div>
         <div className="w-full h-auto flex flex-row gap-1">
           {/* principal amount */}
-          <div className="flex flex-col justify-between w-full h-auto text-center bg-[#F2F4F7] dark:bg-bodyDark px-2 py-1">
+          <div className="flex flex-col justify-between w-full h-auto text-center bg-[#F2F4F7] dark:bg-bodyDark px-2 py-1 dark:border-2 dark:border-[#F2F4F7] dark:border-solid">
             <div className="text-base md:text-lg">Loan Amount</div>
             <div
               className={`text-xl md:text-2xl font-medium
@@ -290,7 +319,7 @@ export const EMI = () => {
             </div>
           </div>
           {/* interest amount */}
-          <div className="flex flex-col justify-between w-full h-auto text-center bg-[#F2F4F7] dark:bg-bodyDark px-2 py-1">
+          <div className="flex flex-col justify-between w-full h-auto text-center bg-[#F2F4F7] dark:bg-bodyDark px-2 py-1 dark:border-2 dark:border-[#F2F4F7] dark:border-solid">
             <div className="text-base md:text-lg">Interest Amount</div>
             <div
               className={`text-xl md:text-2xl font-medium
@@ -303,7 +332,7 @@ export const EMI = () => {
             </div>
           </div>
           {/* total amount */}
-          <div className="flex flex-col justify-between w-full h-auto text-center bg-[#F2F4F7] dark:bg-bodyDark px-2 py-1">
+          <div className="flex flex-col justify-between w-full h-auto text-center bg-[#F2F4F7] dark:bg-bodyDark px-2 py-1 dark:border-2 dark:border-[#F2F4F7] dark:border-solid">
             <div className="text-base md:text-lg">Total Amount</div>
             <div
               className={`text-xl md:text-2xl font-medium

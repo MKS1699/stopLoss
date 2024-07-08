@@ -1,3 +1,3 @@
 import Slider from "./Slider";
-
-export { Slider };
+import { EMI } from "./EMI";
+export { Slider, EMI };
