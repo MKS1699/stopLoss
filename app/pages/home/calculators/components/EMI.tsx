@@ -192,6 +192,7 @@ export const EMI = () => {
                 <Link
                   href={`/pages/home/calculator/emi/${validParam}`}
                   className="bg-[#F2F4F7] dark:bg-bodyDark w-full cursor-pointer dark:border-2 dark:border-[#F2F4F7] dark:border-solid p-1"
+                  key={`${validParam}-emi-link-${index}`}
                 >
                   {validParam === "emi" && "EMI Calculator"}
                   {validParam === "car" && "Car Loan EMI"}

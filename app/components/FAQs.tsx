@@ -58,16 +58,24 @@ const FAQ = ({ faq }: FAQPropTypes) => {
               if (aContainsHeadings) {
                 const aParts = a.split(":");
                 return (
-                  <p className="w-full h-auto my-2">
+                  <p className="w-full h-auto my-2" key={`FAQ-Answer-${index}`}>
                     <span className="font-medium">{aParts[0]} : </span>
                     {aParts[1]}
                   </p>
                 );
               } else {
-                return <p className="w-full h-auto my-2">{a}</p>;
+                return (
+                  <p className="w-full h-auto my-2" key={`FAQ-Answer-${index}`}>
+                    {a}
+                  </p>
+                );
               }
             } else {
-              return <p className="w-full h-auto my-2">{a}</p>;
+              return (
+                <p className="w-full h-auto my-2" key={`FAQ-Answer-${index}`}>
+                  {a}
+                </p>
+              );
             }
           })}
         </motion.div>
