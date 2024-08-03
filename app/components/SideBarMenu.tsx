@@ -23,6 +23,7 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import { FaRegNewspaper } from "react-icons/fa";
 import { GrContactInfo } from "react-icons/gr";
 import { IoMdInformationCircle } from "react-icons/io";
+import { CiCalculator1 } from "react-icons/ci";
 // types import
 import { StyledComponent } from "../types/component_types";
 import Link from "next/link";
@@ -76,6 +77,17 @@ const SideBarMenu = ({
         >
           <FaRegNewspaper className="w-5 h-5" />
           <h4 className="">Market Updates</h4>
+        </Link>
+      </div>
+      {/* Calculators */}
+      <div className="cursor-pointer w-fit h-fit text-light">
+        <Link
+          href={"/pages/home/calculators"}
+          className="flex flex-grow text-nowrap gap-2 items-center"
+          onClick={() => handleShowMenu(false)}
+        >
+          <CiCalculator1 className="w-5 h-5" />
+          <h4 className="">Calculators</h4>
         </Link>
       </div>
       {/* Contacts */}
