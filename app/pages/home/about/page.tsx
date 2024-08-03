@@ -49,7 +49,7 @@ const page = () => {
         at a time. Cheers to financial success! 🚀💰
       </div>
       {/* team details */}
-      <div className="text-xl lg:text-3xl mt-4 lg:mt-8 w-full lg:w-[40%] lg:mx-auto h-full grid grid-cols-1 grid-rows-[20%_80%] rounded-md shadow-lg dark:text-light text-dark shadow-lg">
+      <div className="text-xl lg:text-3xl mt-4 lg:mt-8 w-full lg:w-[40%] lg:mx-auto h-full grid grid-cols-1 grid-rows-[20%_80%] rounded-md shadow-lg dark:text-light text-dark">
         <div className="w-full h-full text-center rounded-t-md border-t-2 border-x-2 grid grid-cols-[30%_70%] grid-rows-1">
           <div className="self-center justify-self-end">
             <FaUserGroup />

@@ -216,7 +216,7 @@ export const EMI = () => {
               id="loanAmount"
               value={loanAmount}
               onChange={(e) => setLoanAmount(parseInt(e.target.value))}
-              className={`outline-none ring-2  px-2 rounded-sm bg-light dark:bg-bodyDark  ${
+              className={`outline-none ring-2  px-2 rounded-sm bg-light dark:bg-bodyDark min-w-48 ${
                 isLA
                   ? "ring-[#00b386] text-[#00b386]"
                   : "ring-[#d64933] text-[#d64933]"
@@ -227,7 +227,7 @@ export const EMI = () => {
             min={minmaxLA[0]}
             max={minmaxLA[1]}
             currentValue={loanAmount}
-            updateCurrent={(val: number) => setLoanAmount(val)}
+            updateCurrent={(val: number | string) => setLoanAmount(+val)}
             unit="inr"
             key={"Range Slider Loan Amount"}
           />
@@ -244,7 +244,7 @@ export const EMI = () => {
               id="loanTenure"
               value={loanTenure}
               onChange={(e) => setLoanTenure(parseInt(e.target.value))}
-              className={`outline-none ring-2  px-2 rounded-sm bg-light dark:bg-bodyDark  ${
+              className={`outline-none ring-2  px-2 rounded-sm bg-light dark:bg-bodyDark min-w-48 ${
                 isLT
                   ? "ring-[#00b386] text-[#00b386]"
                   : "ring-[#d64933] text-[#d64933]"
@@ -255,7 +255,7 @@ export const EMI = () => {
             min={minmaxLT[0]}
             max={minmaxLT[1]}
             currentValue={loanTenure}
-            updateCurrent={(val: number) => setLoanTenure(val)}
+            updateCurrent={(val: number | string) => setLoanTenure(+val)}
             unit="years"
             key={"Range Slider Loan Tenure"}
           />
@@ -272,7 +272,7 @@ export const EMI = () => {
               id="loanInterest"
               value={loanInterest}
               onChange={(e) => setLoanInterest(e.target.value)}
-              className={`outline-none ring-2  px-2 rounded-sm bg-light dark:bg-bodyDark  ${
+              className={`outline-none ring-2  px-2 rounded-sm bg-light dark:bg-bodyDark min-w-48 ${
                 isLI
                   ? "ring-[#00b386] text-[#00b386]"
                   : "ring-[#d64933] text-[#d64933]"
@@ -283,7 +283,9 @@ export const EMI = () => {
             min={minmaxLI[0]}
             max={minmaxLI[1]}
             currentValue={+loanInterest}
-            updateCurrent={(val: string) => setLoanInterest(val)}
+            updateCurrent={(val: string | number) =>
+              setLoanInterest(val.toString())
+            }
             unit="interest"
             key={"Range Slider Loan Interest"}
           />

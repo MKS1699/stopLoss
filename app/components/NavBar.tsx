@@ -20,6 +20,7 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import { FaRegNewspaper } from "react-icons/fa";
 import { GrContactInfo } from "react-icons/gr";
 import { IoMdInformationCircle } from "react-icons/io";
+import { CiCalculator1 } from "react-icons/ci";
 import Link from "next/link";
 
 const NavBar = () => {
@@ -48,9 +49,10 @@ const NavBar = () => {
       </div>
       {/* Contacts */}
       <div className="hidden cursor-pointer w-fit h-fit xl:grid grid-cols-[30%_70%] grid-rows-1 items-center gap-0">
-        <GrContactInfo className="w-5 h-5" />
-        <Link href={"/pages/home/contact"}>
-          <h4 className="">Contact</h4>
+        {/* <GrContactInfo className="w-5 h-5" /> */}
+        <CiCalculator1 className="w-5 h-5" />
+        <Link href={"/pages/home/calculators"}>
+          <h4 className="">Calculator</h4>
         </Link>
       </div>
       {/* About */}

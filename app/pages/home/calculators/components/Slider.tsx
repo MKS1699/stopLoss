@@ -7,7 +7,7 @@ interface SliderPropsTypes {
   min: number;
   max: number;
   currentValue: number;
-  updateCurrent: ((val: number) => void) | ((val: string) => void);
+  updateCurrent: (val: number | string) => void;
 }
 const Slider = ({
   unit,
