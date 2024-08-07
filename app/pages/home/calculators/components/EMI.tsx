@@ -190,7 +190,7 @@ export const EMI = () => {
             if (validParam !== params.emiCalculator) {
               return (
                 <Link
-                  href={`/pages/home/calculator/emi/${validParam}`}
+                  href={`/pages/home/calculators/emi/${validParam}`}
                   className="bg-[#F2F4F7] dark:bg-bodyDark w-full cursor-pointer dark:border-2 dark:border-[#F2F4F7] dark:border-solid p-1"
                   key={`${validParam}-emi-link-${index}`}
                 >
